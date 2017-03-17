@@ -21,7 +21,7 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 
 CentOS 7 see [Docker Community Edition for CentOS](https://store.docker.com/editions/community/docker-ce-server-centos?tab=description)
 
-Ubunut see [Docker Community Edition for Ubuntu](https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description)
+Ubuntu see [Docker Community Edition for Ubuntu](https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description)
 
 ```bash
 
