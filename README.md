@@ -48,3 +48,23 @@ $ sudo curl -L "https://github.com/docker/compose/releases/download/1.11.2/docke
 $ sudo chmod +x /usr/local/bin/docker-compose
 
 ```
+
+
+#Usage
+
+1. clone the `lnmp-docker` on CentOS 7
+
+
+```bash
+$ git clone https://github.com/bravist/lnmp-docker
+```
+
+
+2. go to the lnmp-docker and build it with docker-compose
+
+```bash
+
+$ cd lnmp-docker
+
+$ sudo docker-compose build && docker-compose up -d
+```
