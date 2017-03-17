@@ -1,2 +1,50 @@
 # lnmp-docker
 Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7)
+
+
+#### Features (*Recommended for personal use AWS*)
+
+- Amazon Web Service
+- CentOS 7
+- Docker
+- Docker Compose
+- PHP 7.0
+- Nginx
+- MariaDB
+- Redis
+- docker-compose.yml
+
+
+## Install docker on CentOS 7
+
+See [Docker Community Edition for CentOS](https://store.docker.com/editions/community/docker-ce-server-centos?tab=description)
+
+```bash
+
+$ sudo yum install -y yum-utils
+
+$ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+$ sudo yum makecache fast
+
+$ sudo yum -y install docker-ce
+
+$ sudo systemctl start docker
+
+```
+
+
+## Install docker compose
+
+see [Install Docker Compose](https://docs.docker.com/compose/install/)
+
+
+```bash
+
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+$ sudo chmod +x /usr/local/bin/docker-compose
+
+```
