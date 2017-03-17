@@ -12,6 +12,7 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 - Nginx
 - MariaDB
 - Redis
+- PHP Composer
 - docker-compose.yml
 
 
