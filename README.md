@@ -1,5 +1,5 @@
 # lnmp-docker
-Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7)
+Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 
 
 #### Features (*Recommended for personal use AWS*)
