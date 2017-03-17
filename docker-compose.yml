@@ -17,7 +17,7 @@ services:
       - ./nginx/ca/server.crt/:/etc/nginx/server.crt:ro
       - ./nginx/ca/server.key/:/etc/nginx/server.key:ro
     links:
-      - php-fpm:__DOCKER_PHP_FPM__
+      - php-fpm
     # PHP-FPM
   php-fpm:
     build: ./php-fpm
