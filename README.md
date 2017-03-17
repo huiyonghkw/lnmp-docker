@@ -68,3 +68,13 @@ $ cd lnmp-docker
 
 $ sudo docker-compose build && docker-compose up -d
 ```
+
+
+
+# Mantainance
+
+```bash
+
+$ sudo docker-compose start/stop/restart
+
+```
