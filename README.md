@@ -77,8 +77,17 @@ $ sudo docker-compose build && docker-compose up -d
 
 # Mantainance
 
+run the docker
+
 ```bash
 
 $ sudo docker-compose start/stop/restart
 
+```
+
+enter the container
+
+``` bash
+
+$ docker exec -it lnmpdocker_nginx_1 /bin/bash
 ```
