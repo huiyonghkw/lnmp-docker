@@ -13,8 +13,11 @@ services:
       #nginx config
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
+      # certificates
+      #- ./nginx/ca/server.crt/:/etc/nginx/server.crt:ro
+      #- ./nginx/ca/server.key/:/etc/nginx/server.key:ro
     links:
-      - php-fpm
+      - php-fpm:__DOCKER_PHP_FPM__
     # PHP-FPM
   php-fpm:
     build: ./php-fpm
@@ -26,13 +29,27 @@ services:
     volumes:
       #php.ini
       - ./php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
-  php-cli:
-    build: ./php-cli
+    links:
+      - mariadb
+      - redis
+  # MariaDB
+  mariadb:
+    image: mariadb
     ports:
-      - "8190"
-    volumes_from:
-      - www
-    volumes: ./php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
+      - "3306:3306"
+    volumes:
+      # NOTE: your data will be stored in ./mysql
+      - ./mariadb/data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=mysql
+      - MYSQL_USER=developer
+      - MYSQL_PASSWORD=developer
+      - MYSQL_ROOT_PASSWORD=developer
+  # Redis
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
     #source code container
   www:
     image: tianon/true
