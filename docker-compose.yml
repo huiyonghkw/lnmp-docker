@@ -29,6 +29,16 @@ services:
     links:
       - mariadb
       - redis
+  php-cli:
+    build: ./php-cli
+    ports:
+      - "8190"
+    volumes_from:
+      - www
+    volumes: ./php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
+    links:
+      - mariadb
+      - redis
   # MariaDB
   mariadb:
     image: mariadb
