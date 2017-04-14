@@ -68,10 +68,7 @@ services:
       - "6379:6379"
   # Composer
   composer:
-    image: composer/composer
-    volumes_from:
-      - php-fpm
-    working_dir: /usr/share/nginx/html
+    image: lucor/composer
   # 运行composer: docker-compose run composer install
   # https://github.com/RobLoach/docker-composer/issues/88#issuecomment-229213544
   #source code container
