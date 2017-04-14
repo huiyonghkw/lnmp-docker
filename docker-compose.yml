@@ -46,6 +46,7 @@ services:
     links:
       - mariadb
       - redis
+      - composer 
   # MariaDB
   mariadb:
     image: mariadb
