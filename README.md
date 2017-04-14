@@ -79,7 +79,16 @@ $ sudo docker-compose build && docker-compose up -d
 
 ```bash
 $ docker-compose run composer -h
+$ docker-compose run composer require dingo/api -vvv
 ```
+
+in china. your php project maybe to speed up like this
+
+```bash
+$ docker-compose run composer config repo.packagist composer https://packagist.phpcomposer.com
+```
+
+
 
 # Mantainance
 
