@@ -88,6 +88,11 @@ in china. your php project maybe to speed up like this
 $ docker-compose run composer config repo.packagist composer https://packagist.phpcomposer.com
 ```
 
+you can use this command for composer 1.4.1
+
+```bash
+$ docker run --rm -ti -v $(pwd):/app lucor/composer -h
+```
 
 
 # Mantainance
