@@ -5,15 +5,16 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 #### Features (*Recommended for personal use AWS*)
 
 - Amazon Web Service
-- CentOS 7
+- CentOS 7.*
 - Docker
 - Docker Compose
-- PHP 7.0
+- PHP 7.1.*
 - Nginx
 - MariaDB
 - Redis
 - PHP Composer
 - docker-compose.yml
+- PHP Dependency: Composer
 
 
 ## Install docker on CentOS 7
@@ -42,7 +43,7 @@ $ sudo systemctl start docker
 
 ## Install docker compose
 
-see [Install Docker Compose](https://docs.docker.com/compose/install/)
+see [Install Docker Compose](https://docs.docker.com/compose/install/). maybe you visit [github release page](https://github.com/docker/compose/releases) for installing (`Recommend`).
 
 
 ```bash
@@ -74,6 +75,11 @@ $ sudo docker-compose build && docker-compose up -d
 ```
 
 
+3. how to use composer
+
+```bash
+$ docker-compose run composer -h
+```
 
 # Mantainance
 
