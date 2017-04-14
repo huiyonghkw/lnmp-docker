@@ -32,6 +32,7 @@ services:
     links:
       - mariadb
       - redis
+      - composer
   # PHP-FPM
   php-cli:
     build: ./php-cli
@@ -46,7 +47,7 @@ services:
     links:
       - mariadb
       - redis
-      - composer 
+      - composer
   # MariaDB
   mariadb:
     image: mariadb
