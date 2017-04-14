@@ -64,7 +64,14 @@ services:
     image: redis
     ports:
       - "6379:6379"
-    #source code container
+  # Composer
+  composer:
+    image: composer/composer
+    volumes_from:
+      - php-fpm
+    working_dir: /usr/share/nginx/html
+  # 运行composer: docker-compose run composer install
+  #source code container
   www:
     image: tianon/true
     volumes:
