@@ -22,7 +22,7 @@ services:
   php-fpm:
     build: ./php-fpm
     ports:
-      - "9000"
+      - "9000:9000"
       #source code container
     volumes_from:
       - www
@@ -37,7 +37,7 @@ services:
   php-cli:
     build: ./php-cli
     ports:
-      - "8190"
+      - "8190:8190"
      #source code container
     volumes_from:
       - www
