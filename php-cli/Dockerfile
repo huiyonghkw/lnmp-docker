@@ -14,13 +14,47 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
-RUN pecl install redis-3.1.2
+# https://hub.docker.com/r/phpdocker/phpdocker/~/dockerfile/
 
-# You can install php extensions using docker-php-ext-install
+# images
+RUN apt-get update \
+	&& apt-get install -y \
+	libfreetype6-dev \
+	libjpeg62-turbo-dev \
+	libpng12-dev \
+	libgd-dev \
+	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+	&& docker-php-ext-install \
+		gd \
+		exif
 
-RUN docker-php-ext-install pdo pdo_mysql
+# xml
+RUN apt-get update \
+	&& apt-get install -y \
+	libxml2-dev \
+	libxslt-dev \
+	&& docker-php-ext-install \
+		dom \
+		xmlrpc \
+		xsl
 
-RUN docker-php-ext-install zip
+# database
+RUN docker-php-ext-install \
+	mysqli \
+	pdo \
+	pdo_mysql
+
+# compression
+RUN apt-get update \
+	&& apt-get install -y \
+	libbz2-dev \
+	zlib1g-dev \
+	&& docker-php-ext-install \
+		zip \
+		bz2
+
+# others
+RUN docker-php-ext-install mbstring json bcmath
 
 # install supervisord
 RUN apt-get install -y supervisor
