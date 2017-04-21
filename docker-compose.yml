@@ -2,19 +2,13 @@ version: '2'
 services:
   # Web Server
   nginx:
-    image: nginx
+    build: ./nginx
     ports:
       - "80:80"
       - "443:443"
     #source code container
     volumes_from:
       - www
-    volumes:
-      #nginx config
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
-      # certificates
-      #- ./nginx/cert/:/etc/nginx/cert/:ro
     links:
       - php-fpm
   # PHP-FPM

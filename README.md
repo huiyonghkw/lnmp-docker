@@ -15,6 +15,7 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 - PHP Composer
 - docker-compose.yml
 - PHP Dependency: Composer
+- SSL
 
 
 ## Install docker on CentOS 7
@@ -93,7 +94,6 @@ you can use this command for composer 1.4.1
 ```bash
 $ docker run --rm -ti -v $(pwd):/app lucor/composer -h
 ```
-
 
 # Mantainance
 
