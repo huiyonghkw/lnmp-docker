@@ -2,7 +2,7 @@
 Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 
 
-#### Features (*Recommended for personal use AWS*)
+#### Features
 
 - Amazon Web Service
 - CentOS 7.*
@@ -57,6 +57,10 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 
 ```
 
+## Gitlab - GitLab is open source software to collaborate on code
+
+As default, you can visit http://ipaddress:8080 when the gitlab image built complete. make sure the host port 80 is open.
+
 
 # Usage
 
@@ -82,8 +86,6 @@ $ sudo docker-compose build && docker-compose up -d
 ```bash
 $ docker-compose run composer -h
 $ docker-compose run composer require dingo/api -vvv
-
-$ docker run --rm -ti -v $(pwd):/app lucor/composer for composer 1.4.1 
 ```
 
 in china. your php project maybe to speed up like this
