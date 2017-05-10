@@ -41,7 +41,7 @@ services:
       - mariadb
       - redis
       - composer
-  # MariaDB
+  # MariaDB - One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
   mariadb:
     image: mariadb
     ports:
@@ -62,11 +62,18 @@ services:
   # Composer
   composer:
     image: lucor/composer
-  # 运行composer: docker-compose run composer install
-  # https://github.com/RobLoach/docker-composer/issues/88#issuecomment-229213544
 
-  #docker run --rm -ti -v $(pwd):/app lucor/composer for composer 1.4.1
-  #source code container
+  # Gitlab - GitLab is open source software to collaborate on code
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    ports: 
+      - "8443:443"
+      - "8080:80"
+    volumes:
+      - ./gitlab/config:/etc/gitlab
+      - ./gitlab/logs:/var/log/gitlab 
+      - ./gitlab/data:/var/opt/gitlab 
+  # Web application code container
   www:
     image: tianon/true
     volumes:

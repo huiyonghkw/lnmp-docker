@@ -15,7 +15,9 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 - PHP Composer
 - docker-compose.yml
 - PHP Dependency: Composer
-- SSL
+- HTTPS SSL
+- Gitlab
+- PostgreSQL
 
 
 ## Install docker on CentOS 7
@@ -76,11 +78,12 @@ $ sudo docker-compose build && docker-compose up -d
 ```
 
 
-3. how to use composer
-
+3. how to use composer, see https://github.com/RobLoach/docker-composer/issues/88#issuecomment-229213544
 ```bash
 $ docker-compose run composer -h
 $ docker-compose run composer require dingo/api -vvv
+
+$ docker run --rm -ti -v $(pwd):/app lucor/composer for composer 1.4.1 
 ```
 
 in china. your php project maybe to speed up like this
