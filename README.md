@@ -59,6 +59,23 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 
 As default, you can visit http://ipaddress:8080 when the gitlab image built complete. make sure the host port 80 is open.
 
+### Gitlab backup & restore
+
+visit https://github.com/gitlabhq/gitlabhq/blob/master/doc/raketasks/backup_restore.md
+
+```bash
+# This command will create 1494401197_2017_05_10_gitlab_backup.tar on /var/opt/gitlab/backups/
+$ sudo gitlab-rake gitlab:backup:create
+
+...
+#  Copy the backup file to the server's /mnt/lnmp-docker/gitlab/data/backups
+$ sudo cp user@host:/destnation/1494401197_2017_05_10_gitlab_backup.tar user@host:/mnt/lnmp-docker/gitlab/data/backups
+...
+
+# This command will overwrite the contents of your GitLab database!
+$ sudo gitlab-rake gitlab:backup:restore BACKUP=1494401197_2017_05_10
+```
+
 
 # Usage
 
