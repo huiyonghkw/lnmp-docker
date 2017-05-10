@@ -4,7 +4,6 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 
 #### Features
 
-- Amazon Web Service
 - CentOS 7.*
 - Docker
 - Docker Compose
