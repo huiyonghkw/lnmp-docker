@@ -22,9 +22,6 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 
 ## Install docker on CentOS 7
 
-
-CentOS 7 see [Docker Community Edition for CentOS](https://store.docker.com/editions/community/docker-ce-server-centos?tab=description)
-
 Ubuntu see [Docker Community Edition for Ubuntu](https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description)
 
 ```bash
@@ -42,6 +39,8 @@ $ sudo yum -y install docker-ce
 $ sudo systemctl start docker
 
 ```
+
+more see [Docker Community Edition for CentOS](https://store.docker.com/editions/community/docker-ce-server-centos?tab=description)
 
 
 ## Install docker compose
@@ -82,7 +81,7 @@ $ sudo docker-compose build && docker-compose up -d
 ```
 
 
-3. how to use composer, see https://github.com/RobLoach/docker-composer/issues/88#issuecomment-229213544
+3. how to use composer, more for https://github.com/RobLoach/docker-composer/issues/88#issuecomment-229213544
 ```bash
 $ docker-compose run composer -h
 $ docker-compose run composer require dingo/api -vvv
