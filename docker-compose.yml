@@ -74,12 +74,12 @@ services:
       - ./gitlab/data:/home/git/data:Z
     links:
       - redis
-      - mariadb
+      - postgresql
     environment:
       - DEBUG=false
-      - DB_ADAPTER=mysql
-      - DB_HOST=mariadb
-      - DB_PORT=3306
+      - DB_ADAPTER=postgresql
+      - DB_HOST=postgresql
+      - DB_PORT=5432
       - DB_USER=gitlab
       - DB_PASS=password
       - DB_NAME=gitlabhq_production
