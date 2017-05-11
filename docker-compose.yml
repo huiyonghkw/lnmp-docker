@@ -139,6 +139,8 @@ services:
       - DB_PASS=password
       - DB_NAME=gitlabhq_production
       - DB_EXTENSION=pg_trgm
+    ports: 
+      - "5432:5432"
   # Web application code container
   www:
     image: tianon/true
