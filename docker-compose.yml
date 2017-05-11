@@ -76,7 +76,16 @@ services:
       - ./gitlab/data:/var/opt/gitlab 
     links:
       - redis
-      - mariadb
+      - postgresql
+  postgresql:
+    image: sameersbn/postgresql:9.6-2
+    volumes:
+      - ./gitlab/postgresql:/var/lib/postgresql:Z
+    environment:
+      - DB_USER=gitlab
+      - DB_PASS=password
+      - DB_NAME=gitlabhq_production
+      - DB_EXTENSION=pg_trgm
   # Web application code container
   www:
     image: tianon/true
