@@ -76,6 +76,7 @@ services:
       - ./gitlab/data:/var/opt/gitlab 
     depends_on:
       - redis
+      - mariadb
   # Web application code container
   www:
     image: tianon/true
