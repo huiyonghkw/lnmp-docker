@@ -12,6 +12,7 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 - Redis
 - Composer
 - HTTPS
+- Supervisor
 
 
 ## Install docker on CentOS 7
@@ -42,14 +43,14 @@ more see [Docker Community Edition for CentOS](https://store.docker.com/editions
 1. clone the `lnmp-docker` on CentOS 7
 
 
-```bash
+```
 $ git clone https://github.com/bravist/lnmp-docker
 ```
 
 
 2. go to the lnmp-docker and build it with docker-compose
 
-```bash
+```
 
 $ cd lnmp-docker
 
@@ -58,17 +59,25 @@ $ sudo docker-compose build && docker-compose up -d
 
 # Mantainance
 
-run the docker
-
-```bash
-
-$ sudo docker-compose start/stop/restart
++ run the docker
 
 ```
+$ sudo docker-compose start/stop/restart
+```
 
-enter the container
++ enter the container
 
-``` bash
+```
+$ docker exec -it lnmpdocker_nginx_1 bash
+```
++ install php dependency with composer
 
-$ docker exec -it lnmpdocker_nginx_1 /bin/bash
+```
+$ docker exec -it lnmpdocker_php-fpm_1 bash
+
+$ cd your_project
+
+$ composer install -vvv
+
+
 ```
