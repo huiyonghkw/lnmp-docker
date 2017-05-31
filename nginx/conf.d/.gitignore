@@ -1,2 +1,4 @@
 *
 !.gitignore
+!default.conf
+!ssl.default.conf
