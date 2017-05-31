@@ -14,7 +14,7 @@ Docker for LNMP(CentOS7 + Nginx + MariaDB + PHP7 + Redis)
 - PHP Composer
 - docker-compose.yml
 - PHP Dependency: Composer
-- HTTPS SSL
+- HTTPS
 
 
 ## Install docker on CentOS 7
