@@ -25,7 +25,6 @@ services:
     links:
       - mariadb
       - redis
-      - composer
   # PHP-FPM
   php-cli:
     build: ./php-cli
