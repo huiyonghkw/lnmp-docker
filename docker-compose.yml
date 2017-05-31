@@ -59,10 +59,6 @@ services:
     image: redis
     ports:
       - "6379:6379"
-  # Composer
-  composer:
-    image: lucor/composer
-    
   # Web application code container
   www:
     image: tianon/true
