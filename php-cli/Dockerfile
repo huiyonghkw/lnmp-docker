@@ -65,7 +65,11 @@ RUN composer install --no-scripts --no-autoloader
 COPY . ./
 RUN composer dump-autoload --optimize && \
 	composer run-scripts post-install-cmd
-	
+
+# Run composer and phpunit installation.
+RUN composer selfupdate && \
+    composer require "phpunit/phpunit:~6.1.4" --prefer-source --no-interaction && \
+    ln -s /tmp/vendor/bin/phpunit /usr/local/bin/phpunit
 
 # install supervisord
 RUN apt-get install -y supervisor
