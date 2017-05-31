@@ -9,6 +9,8 @@ services:
     #source code container
     volumes_from:
       - www
+    volumes:
+      - ./nginx/logs:/var/log/nginx
     links:
       - php-fpm
   # PHP-FPM
