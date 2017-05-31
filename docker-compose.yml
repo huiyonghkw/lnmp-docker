@@ -41,6 +41,15 @@ services:
     links:
       - mariadb
       - redis
+  php-cli-call:
+    build: ./php-cli
+    volumes_from:
+       - www
+    command: php /usr/share/nginx/html/call.weipeiapp.com/start.php start
+    ports:
+      - "8190:8190"
+      - "8191:8191"
+    restart: always
   # MariaDB - One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
   mariadb:
     image: mariadb
