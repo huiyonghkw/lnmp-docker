@@ -56,14 +56,12 @@ RUN apt-get update \
 # others
 RUN docker-php-ext-install mbstring json bcmath
 
+USER bravist
+WORKDIR /home/bravist
+
 # composer
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer
-
-# Run composer and phpunit installation.
-RUN composer selfupdate && \
-    composer require "phpunit/phpunit:~6.1.4" --prefer-source --no-interaction && \
-    ln -s /tmp/vendor/bin/phpunit /usr/local/bin/phpunit
 
 # install supervisord
 RUN apt-get install -y supervisor
