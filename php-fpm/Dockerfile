@@ -56,8 +56,7 @@ RUN apt-get update \
 # others
 RUN docker-php-ext-install mbstring json bcmath
 
-USER bravist
-WORKDIR /home/bravist
+RUN useradd -ms /bin/bash bravist
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | \
