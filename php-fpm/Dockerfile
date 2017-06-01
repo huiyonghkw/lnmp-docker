@@ -61,7 +61,7 @@ WORKDIR /usr/share/nginx/html
 
 # 建立 php-fpm 用户
 RUN groupadd -r php \
-	&& useradd -r -g php-fpm php
+	&& useradd -r -g php php-fpm
 
 USER php-fpm
 
