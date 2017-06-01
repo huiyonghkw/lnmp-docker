@@ -61,8 +61,7 @@ RUN apt-get install -y supervisor \
 
 # https://yeasy.gitbooks.io/docker_practice/content/image/dockerfile/user.html
 # 建立 php-cli 用户
-RUN groupadd -r php \
-	&& useradd -r -g php php-cli
+RUN useradd -r -g root php-cli
 
 USER php-cli
 
