@@ -53,19 +53,19 @@ RUN apt-get update \
 		zip \
 		bz2
 
-# others
-RUN docker-php-ext-install mbstring json bcmath
-
-RUN useradd -ms /bin/bash bravist
+# https://yeasy.gitbooks.io/docker_practice/content/image/build.html
+RUN docker-php-ext-install \
+	mbstring \
+	json \
+	bcmath
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer
 
 # install supervisord
-RUN apt-get install -y supervisor
-
-RUN mkdir -p /var/log/supervisor
+RUN apt-get install -y supervisor \
+	&& mkdir -p /var/log/supervisor
 
 WORKDIR /usr/share/nginx/html
 

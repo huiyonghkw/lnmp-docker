@@ -54,9 +54,10 @@ RUN apt-get update \
 		bz2
 
 # others
-RUN docker-php-ext-install mbstring json bcmath
-
-RUN useradd -ms /bin/bash bravist
+RUN docker-php-ext-install \
+	mbstring \
+	json \
+	bcmath
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | \
