@@ -1,6 +1,6 @@
 #https://store.docker.com/images/9c2c5426-0cca-4a30-a450-b2961541c6dc?tab=description
 
-FROM php:7.1.3-cli
+FROM php:7.1-cli
 
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
@@ -63,12 +63,3 @@ RUN apt-get install -y supervisor \
 # 建立 php-cli 用户
 #RUN useradd -r -g root php-cli
 #USER php-cli
-
-WORKDIR /usr/share/nginx/html
-
-COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
-
-COPY ./supervisor/log/ /var/log/supervisor/
-
-
-CMD ["supervisord", "-n"]
