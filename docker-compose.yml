@@ -32,6 +32,8 @@ services:
   php-supervisor:
     build: ./php-supervisor
     container_name: lnmp-php-supervisor
+    volumes:
+      - ./php-supervisor/supervisor/log:/var/log/supervisor
     volumes_from:
        - www
     links:
