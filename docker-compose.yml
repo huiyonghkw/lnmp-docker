@@ -47,7 +47,7 @@ services:
     ports:
       - "8190:8190"
       - "8191:8191"
-    restart: always
+    # restart: always
   # MariaDB - One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
   mariadb:
     image: mariadb
