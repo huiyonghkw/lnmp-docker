@@ -5,7 +5,5 @@ EXPOSE 8190 8191
 
 ENTRYPOINT []
 
-WORKDIR /usr/share/nginx/html/call.weipeiapp.com
-
-CMD ["/usr/local/bin/php", "start.php start"]
+CMD ["/usr/local/bin/php", "/usr/share/nginx/html/call.weipeiapp.com/start.php start"]
 
