@@ -27,23 +27,14 @@ services:
     links:
       - mariadb
       - redis
-  # PHP-FPM
-  php-cli:
-    build: ./php-cli
-    #source code container
+  php-supervisor:
+    build: ./php-supervisor
     volumes_from:
-      - www
-    volumes:
-      #php.ini
-      - ./php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
+       - www
     links:
       - mariadb
       - redis
-  php-cli-call:
-    build: ./php-cli
-    volumes_from:
-       - www
-    command: php /usr/share/nginx/html/call.weipeiapp.com/start.php start
+  call-websocket:
     ports:
       - "8190:8190"
       - "8191:8191"
