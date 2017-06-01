@@ -10,6 +10,8 @@ MAINTAINER bravist <chenghuiyong1987@gmail.com>
 # images
 RUN apt-get update \
 	&& apt-get install -y \
+	apt-utils \
+	wget \
 	libfreetype6-dev \
 	libjpeg62-turbo-dev \
 	libpng12-dev \
