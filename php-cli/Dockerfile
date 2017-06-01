@@ -61,13 +61,14 @@ RUN apt-get install -y supervisor \
 
 # https://yeasy.gitbooks.io/docker_practice/content/image/dockerfile/user.html
 # 建立 php-cli 用户
-RUN useradd -r -g root php-cli
-
-USER php-cli
+#RUN useradd -r -g root php-cli
+#USER php-cli
 
 WORKDIR /usr/share/nginx/html
 
 COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 
-# 设置 CMD，并以另外的用户执行
+COPY ./supervisor/log/ /var/log/supervisor/
+
+
 CMD ["supervisord", "-n"]
