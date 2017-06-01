@@ -35,6 +35,7 @@ services:
       - mariadb
       - redis
   call-websocket:
+    build: ./call-websocket
     ports:
       - "8190:8190"
       - "8191:8191"
