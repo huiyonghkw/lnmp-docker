@@ -8,6 +8,10 @@ RUN apt-get install -y supervisor \
 
 COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 
-COPY ./supervisor/log/ /var/log/supervisor/
+# Define mountable directories.
+VOLUME ["/etc/supervisor/conf.d", "/var/log/supervisor/"]
 
-ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+# Define working directory.
+WORKDIR /etc/supervisor/conf.d
+
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.conf"]
