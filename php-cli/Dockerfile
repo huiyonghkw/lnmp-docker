@@ -4,16 +4,6 @@ FROM php:7.1.3-cli
 
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        zlib1g-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-        libpng12-dev \
-    && docker-php-ext-install -j$(nproc) iconv mcrypt \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
-
 # https://hub.docker.com/r/phpdocker/phpdocker/~/dockerfile/
 
 # images
@@ -67,8 +57,20 @@ RUN curl -sS https://getcomposer.org/installer | \
 RUN apt-get install -y supervisor \
 	&& mkdir -p /var/log/supervisor
 
+# https://yeasy.gitbooks.io/docker_practice/content/image/dockerfile/user.html
+# 建立 php-cli 用户，并使用 gosu 换另一个用户执行命令
+RUN groupadd -r php-cli && useradd -r -g php-cli php
+
+# 下载 gosu
+RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64" \
+    && chmod +x /usr/local/bin/gosu \
+    && gosu nobody true
+
+
 WORKDIR /usr/share/nginx/html
 
 COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 
-CMD ["supervisord", "-n"]
+# 设置 CMD，并以另外的用户执行
+# CMD ["supervisord", "-n"]
+CMD [ "exec", "gosu", "php-cli", "supervisord", "-n" ]
