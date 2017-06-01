@@ -5,4 +5,4 @@ EXPOSE 8190 8191
 
 COPY ./start.php /usr/share/nginx/html/start.php
 
-CMD ["php /usr/share/nginx/html/start.php start"]
+ENTRYPOINT ['php' ,'start', '/usr/share/nginx/html/start.php']
