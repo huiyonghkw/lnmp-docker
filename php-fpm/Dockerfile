@@ -59,12 +59,10 @@ RUN curl -sS https://getcomposer.org/installer | \
 
 WORKDIR /usr/share/nginx/html
 
-# 建立 php-cli 用户，并使用 gosu 换另一个用户执行命令
-RUN groupadd -r php-fpm && useradd -r -g php-fpm php
+# 建立 php-fpm 用户
+RUN groupadd -r php \
+	&& useradd -r -g php-fpm php
 
-# 下载 gosu
-RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64" \
-    && chmod +x /usr/local/bin/gosu \
-    && gosu nobody true
+USER php-fpm
 
-CMD ["exec", "gosu", "php-fpm", "php-fpm"]
+CMD ["php-fpm"]
