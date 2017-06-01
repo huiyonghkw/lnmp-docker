@@ -10,4 +10,4 @@ COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 
 COPY ./supervisor/log/ /var/log/supervisor/
 
-CMD ["supervisord", "-n"]
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
