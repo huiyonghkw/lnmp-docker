@@ -1,4 +1,6 @@
-WORKDIR /usr/share/nginx/html
+FROM bravist/php-cli-debian-app:1.1
+
+MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
 COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
 
