@@ -3,6 +3,7 @@ services:
   # Web Server
   nginx:
     build: ./nginx
+    container_name: lnmp-nginx
     ports:
       - "80:80"
       - "443:443"
@@ -16,6 +17,7 @@ services:
   # PHP-FPM
   php-fpm:
     build: ./php-fpm
+    container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
       #source code container
@@ -29,6 +31,7 @@ services:
       - redis
   php-supervisor:
     build: ./php-supervisor
+    container_name: lnmp-php-supervisor
     volumes_from:
        - www
     links:
@@ -36,6 +39,8 @@ services:
       - redis
   call-websocket:
     build: ./call-websocket
+    container_name: lnmp-call-websocket
+    command: php /usr/share/nginx/html/call.weipeiapp.com/start.php start
     ports:
       - "8190:8190"
       - "8191:8191"
@@ -43,6 +48,7 @@ services:
   # MariaDB - One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
   mariadb:
     image: mariadb
+    container_name: lnmp-mariadb
     ports:
       - "3306:3306"
     volumes:
@@ -56,10 +62,12 @@ services:
   # Redis
   redis:
     image: redis
+    container_name: lnmp-redis
     ports:
       - "6379:6379"
   # Web application code container
   www:
     image: tianon/true
+    container_name: lnmp-www
     volumes:
       - ./www:/usr/share/nginx/html

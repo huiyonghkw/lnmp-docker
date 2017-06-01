@@ -60,8 +60,8 @@ RUN curl -sS https://getcomposer.org/installer | \
 WORKDIR /usr/share/nginx/html
 
 # 建立 php-fpm 用户
-RUN useradd -r -g root www-data
+#RUN useradd -r -g root www-data
 
-USER php-fpm
+#USER php-fpm
 
 CMD ["php-fpm"]
