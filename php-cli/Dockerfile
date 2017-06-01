@@ -55,10 +55,6 @@ RUN docker-php-ext-install \
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer
 
-# install supervisord
-RUN apt-get install -y supervisor \
-	&& mkdir -p /var/log/supervisor
-
 # https://yeasy.gitbooks.io/docker_practice/content/image/dockerfile/user.html
 # 建立 php-cli 用户
 #RUN useradd -r -g root php-cli
