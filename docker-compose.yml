@@ -42,7 +42,6 @@ services:
     container_name: lnmp-call-websocket
     volumes_from:
       - www
-    command: php /usr/share/nginx/html/call.weipeiapp.com/start.php start
     ports:
       - "8190:8190"
       - "8191:8191"
