@@ -104,3 +104,5 @@ $ composer install -vvv
 ## References
 
 - [https://yeasy.gitbooks.io/docker_practice/content/install/centos.html](https://yeasy.gitbooks.io/docker_practice/content/install/centos.html)
+
+- [如何写docker-compose.yml，Docker compose file 参考文档](https://deepzz.com/post/docker-compose-file.html)
