@@ -64,7 +64,7 @@ services:
       - MYSQL_ROOT_PASSWORD=developer
   # Redis
   redis:
-    image: redis
+    image: redis:3.0-alpine
     container_name: lnmp-redis
     ports:
       - "6379:6379"
