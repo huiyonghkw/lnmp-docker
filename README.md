@@ -12,7 +12,7 @@ Docker for LNMP (CentOS7 + Nginx + MariaDB + PHP7 + Redis + Supervisor)
 - Composer
 - HTTPS
 - PHP CLI
-- PHP FPM 
+- PHP FPM
 - Supervisor
 
 
@@ -33,8 +33,11 @@ $ sudo yum -y install docker-ce
 
 $ sudo systemctl start docker
 
+# Add user to docker group
+$ sudo usermod -aG docker $USER
+
 ```
-## Install Docker Compose 
+## Install Docker Compose
 
 open [https://github.com/docker/compose/releases](https://github.com/docker/compose/releases) page. choose the release and download it.
 
@@ -78,7 +81,7 @@ rebuilt all container. you must locate the `docker-compose.yml` directory.
 ```
 $ docker-compose down
 
-$ docker-compose up -d 
+$ docker-compose up -d
 ```
 
 
