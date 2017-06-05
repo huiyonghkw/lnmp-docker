@@ -19,7 +19,7 @@ Docker for LNMP (CentOS7 + Nginx + MariaDB + PHP7 + Redis + Supervisor)
 
 ## Install docker on CentOS 7
 
-> 国内用户，推荐使用[阿里云](https://github.com/bravist/gitlab-docker/tree/aliyun)分支安装Docker
+> 国内用户，推荐使用[Gitlab-Docker](https://github.com/bravist/gitlab-docker/tree/aliyun)阿里云分支安装Docker 
 
 
 ```bash
