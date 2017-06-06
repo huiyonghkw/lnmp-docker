@@ -29,6 +29,7 @@ services:
     links:
       - mariadb
       - redis
+      - nginx
     #https://github.com/laradock/laradock/issues/435
     extra_hosts:
       - "dockerhost:${DOCKER_HOST_IP}"
