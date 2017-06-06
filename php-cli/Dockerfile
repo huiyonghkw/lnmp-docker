@@ -5,7 +5,6 @@ FROM php:7.1-cli
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
 # https://hub.docker.com/r/phpdocker/phpdocker/~/dockerfile/
-# libevent-dev see https://hub.docker.com/r/andykirkham/base-dockers-php5-cli/~/dockerfile/ 
 
 # images
 RUN apt-get update \
@@ -16,7 +15,6 @@ RUN apt-get update \
 	libjpeg62-turbo-dev \
 	libpng12-dev \
 	libgd-dev \
-	libevent-dev \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install \
 		gd \
@@ -47,6 +45,13 @@ RUN apt-get update \
 		zip \
 		bz2
 
+
+# libevent-dev see https://hub.docker.com/r/andykirkham/base-dockers-php5-cli/~/dockerfile/ 
+
+RUN apt-get update && apt-get install -y $DEPS --no-install-recommends
+
+ENV DEPS \
+	libevent-dev
 
 RUN pecl install libevent-0.1.0 \
     && docker-php-ext-enable libevent 
