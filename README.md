@@ -58,8 +58,14 @@ $ chmod +x /usr/local/bin/docker-compose
 $ git clone https://github.com/bravist/lnmp-docker
 ```
 
+2.Config the env parameters.
 
-2.go into the `lnmp-docker` directory and build docker images and start up the docker container
+```
+$ cp .env.example .env
+```
+
+
+3.go into the `lnmp-docker` directory and build docker images and start up the docker container
 
 ```
 $ cd lnmp-docker
