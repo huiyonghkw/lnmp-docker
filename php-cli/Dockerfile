@@ -47,6 +47,10 @@ RUN apt-get update \
 		zip \
 		bz2
 
+
+RUN pecl install libevent-0.1.0 \
+    && docker-php-ext-enable libevent 
+
 # https://yeasy.gitbooks.io/docker_practice/content/image/build.html
 RUN docker-php-ext-install \
 	mbstring \
@@ -54,9 +58,6 @@ RUN docker-php-ext-install \
 	bcmath \
 	pcntl 
 
-RUN pecl install libevent-0.1.0 \
-    && docker-php-ext-enable libevent 
-	 
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | \
