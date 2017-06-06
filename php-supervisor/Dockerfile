@@ -6,7 +6,7 @@ MAINTAINER bravist <chenghuiyong1987@gmail.com>
 RUN apt-get install -y supervisor \
 	&& mkdir -p /var/log/supervisor
 
-COPY ./supervisor/cron.conf /etc/supervisor/conf.d/cron.conf
+COPY ./supervisor/ /etc/supervisor/conf.d/
 
 # Define mountable directories.
 VOLUME ["/etc/supervisor/conf.d", "/var/log/supervisor/"]
