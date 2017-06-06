@@ -52,7 +52,6 @@ RUN docker-php-ext-install \
 	bcmath
 
 RUN docker-php-ext-install \
-	libevent \
 	pcntl 
 
 # composer
