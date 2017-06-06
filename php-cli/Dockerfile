@@ -51,6 +51,10 @@ RUN docker-php-ext-install \
 	json \
 	bcmath
 
+RUN docker-php-ext-install \
+	libevent \
+	pcntl 
+
 # composer
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer
