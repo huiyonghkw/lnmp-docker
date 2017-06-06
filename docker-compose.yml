@@ -31,7 +31,11 @@ services:
       - redis
     #https://github.com/laradock/laradock/issues/435
     extra_hosts:
-      - "dockerhost:${DOCKER_HOST_IP}"
+      - "${DOMAIN}:${DOCKER_HOST_IP}"
+      - "${DOMAIN2}:${DOCKER_HOST_IP}"
+      - "${DOMAIN3}:${DOCKER_HOST_IP}"
+      - "${DOMAIN4}:${DOCKER_HOST_IP}"
+      - "${DOMAIN5}:${DOCKER_HOST_IP}"
     env_file: 
       - .env
   php-supervisor:
