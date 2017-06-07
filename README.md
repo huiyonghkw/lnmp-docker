@@ -34,6 +34,9 @@ $ sudo yum makecache fast
 
 $ sudo yum -y install docker-ce
 
+## start up docker
+$ sudo sytemctl enable docker
+
 $ sudo systemctl start docker
 
 # Add user to docker group
