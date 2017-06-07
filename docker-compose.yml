@@ -48,6 +48,14 @@ services:
     links:
       - mariadb
       - redis
+    extra_hosts:
+      - "${DOMAIN}:${DOCKER_HOST_IP}"
+      - "${DOMAIN2}:${DOCKER_HOST_IP}"
+      - "${DOMAIN3}:${DOCKER_HOST_IP}"
+      - "${DOMAIN4}:${DOCKER_HOST_IP}"
+      - "${DOMAIN5}:${DOCKER_HOST_IP}"
+    env_file: 
+      - .env
   call-websocket:
     build: ./call-websocket
     container_name: lnmp-call-websocket
