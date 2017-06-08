@@ -9,7 +9,7 @@ MAINTAINER bravist <chenghuiyong1987@gmail.com>
 RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     && echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && echo "@edge-testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-    && apk add \
+    && apk --no-cache add \
     php7@edge-community \
     php7-dev@edge-community \
     php7-common@edge-community \
@@ -49,7 +49,6 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     xmlrpc-c-client@edge-main \
     composer@edge-testing \
 
-    && ln -s /usr/bin/php7 /usr/bin/php \
-    && rm -rf /var/cache/apk/*
+    && ln -s /usr/bin/php7 /usr/bin/php
 
 CMD ["php", "-a"]
