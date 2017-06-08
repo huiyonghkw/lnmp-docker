@@ -6,15 +6,13 @@ LNMP Docker Compose (CentOS7 + Nginx + MariaDB + PHP7 + Redis + Supervisor)
 ## Feature
 
 - Docker Compose
-- PHP 7.1 Debian
-- Nginx (SSL)
+- Nginx (Support ssl certificate)
 - MariaDB
 - Redis
-- Composer
-- HTTPS
-- PHP CLI
-- PHP FPM
+- PHP 7.0 Cli Container with composer 
+- PHP 7.1 FPM Container with composer
 - Supervisor
+- Guzzle/Curl connections between multiple projects
 
 
 
