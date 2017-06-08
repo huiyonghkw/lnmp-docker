@@ -47,7 +47,7 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     php7-pcntl@edge-community \
     php7-gd@edge-community \
     xmlrpc-c-client@edge-main \
-    composer@edge-testing 
+    composer@edge-testing \
 
     && ln -s /usr/bin/php7 /usr/bin/php \
     && rm -rf /var/cache/apk/*
