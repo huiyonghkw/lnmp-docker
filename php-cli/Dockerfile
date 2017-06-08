@@ -9,9 +9,9 @@ MAINTAINER bravist <chenghuiyong1987@gmail.com>
 RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     && echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && echo "@edge-testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-    && apk add -U \
-
-    tini \
+    && 
+    \
+    apk --no-cache add \
     php7@edge-community \
     php7-dev@edge-community \
     php7-common@edge-community \
@@ -43,20 +43,15 @@ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk
     php7-zlib@edge-community \
     php7-dom@edge-community \
     php7-redis@edge-community \
-    php7-fpm@edge-community \
+    php7@edge-community \
     php7-tokenizer@edge-community \
     \
     php7-pcntl@edge-community \
     php7-gd@edge-community \
     xmlrpc-c-client@edge-main \
-    composer@edge-testing \
+    composer@edge-testing 
+
+    && ln -s /usr/bin/php7 /usr/bin/php \
     && rm -rf /var/cache/apk/*
 
-ADD rootfs /
-
-ENTRYPOINT ["/sbin/tini", "--"]
-
 CMD ["php", "-a"]
-
-WORKDIR /app
-
