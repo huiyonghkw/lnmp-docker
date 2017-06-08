@@ -1,11 +1,12 @@
 # lnmp-docker
-Docker for LNMP (CentOS7 + Nginx + MariaDB + PHP7 + Redis + Supervisor)
+
+LNMP Docker Compose (CentOS7 + Nginx + MariaDB + PHP7 + Redis + Supervisor)
 
 
 ## Feature
 
 - Docker Compose
-- PHP 7.1
+- PHP 7.1 Debian
 - Nginx (SSL)
 - MariaDB
 - Redis
@@ -45,7 +46,8 @@ $ sudo usermod -aG docker $USER
 ```
 ## Install Docker Compose
 
-open [https://github.com/docker/compose/releases](https://github.com/docker/compose/releases) page. choose the release and download it.
+Use the usual commands to install or upgrade Compose. [https://github.com/docker/compose/releases](https://github.com/docker/compose/releases) 
+ 
 
 ```
 $ curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
@@ -55,20 +57,20 @@ $ chmod +x /usr/local/bin/docker-compose
 
 ## Usage
 
-1.clone this repository `lnmp-docker`.
+1.Clone this repository `lnmp-docker`.
 
 ```
 $ git clone https://github.com/bravist/lnmp-docker
 ```
 
-2.Config the env parameters.
+2.Setup the env parameters.
 
 ```
 $ cp .env.example .env
 ```
 
 
-3.go into the `lnmp-docker` directory and build docker images and start up the docker container
+3.Go into the `lnmp-docker` directory and build docker images and start up the docker container
 
 ```
 $ cd lnmp-docker
