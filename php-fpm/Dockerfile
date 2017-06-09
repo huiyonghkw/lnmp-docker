@@ -19,6 +19,6 @@ RUN apk update \
 
 	 && rm -rf /var/cache/apk/* 
 
-CMD ["/usr/sbin/php-fpm7", "-R", "--nodaemonize"]
+CMD ["/usr/sbin/php-fpm7"]
 
 EXPOSE 9000
