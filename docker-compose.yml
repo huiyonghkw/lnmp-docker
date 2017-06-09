@@ -13,11 +13,11 @@ services:
     volumes:
       - ./nginx/logs:/var/log/nginx
     links:
-      - php-fpm
+      - lnmp-php-fpm:php-fpm
   # PHP-FPM
   php-fpm:
     build: ./php-fpm
-    container_name: php-fpm
+    container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
       #source code container
