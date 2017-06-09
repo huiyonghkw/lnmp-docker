@@ -2,9 +2,10 @@ FROM bravist/php-cli-debian-app:1.3
 
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
-# install supervisord
-RUN apt-get install -y supervisor \
-	&& mkdir -p /var/log/supervisor
+RUN apk update \
+	&& apk upgrade \
+	&& apk add supervisor \
+	&& rm -rf /var/cache/apk/*
 
 COPY ./supervisor/ /etc/supervisor/conf.d/
 
