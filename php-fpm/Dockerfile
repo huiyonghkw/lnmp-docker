@@ -21,6 +21,8 @@ RUN apk update \
 
 EXPOSE 9000
 
-CMD ["/usr/sbin/php-fpm7"]
+WORKDIR /usr/share/nginx/html
+
+CMD ["/usr/sbin/php-fpm7", "-R", "--nodaemonize"]
 
 
