@@ -7,14 +7,14 @@ MAINTAINER bravist <chenghuiyong1987@gmail.com>
 # https://pkgs.alpinelinux.org/packages
 
 # Mirror mirror switch to Ali-OSM (Alibaba Open Source Mirror Site) - http://mirrors.aliyun.com/
-RUN echo '@edge-main http://mirrors.aliyun.com/alpine/latest-stable/main' >> /etc/apk/repositories \
-	&& echo '@edge-community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories \
-	&& echo '@edge-testing http://mirrors.aliyun.com/alpine/edge/testing' >> /etc/apk/repositories
+#RUN echo '@edge-main http://mirrors.aliyun.com/alpine/latest-stable/main' >> /etc/apk/repositories \
+#	&& echo '@edge-community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories \
+#	&& echo '@edge-testing http://mirrors.aliyun.com/alpine/edge/testing' >> /etc/apk/repositories
 
 # Mirror mirror switch to Alpine Linux - http://dl-4.alpinelinux.org/alpine/
-# RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
-#     && echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-#     && echo "@edge-testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
+ RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
+     && echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+     && echo "@edge-testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
 
 RUN apk add \
     php7@edge-community \
