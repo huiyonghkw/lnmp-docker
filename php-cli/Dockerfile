@@ -7,52 +7,52 @@ MAINTAINER bravist <chenghuiyong1987@gmail.com>
 # https://pkgs.alpinelinux.org/packages
 
 # Mirror mirror switch to Ali-OSM (Alibaba Open Source Mirror Site) - http://mirrors.aliyun.com/
-#RUN echo '@edge-main http://mirrors.aliyun.com/alpine/latest-stable/main' >> /etc/apk/repositories \
-#	&& echo '@edge-community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories \
-#	&& echo '@edge-testing http://mirrors.aliyun.com/alpine/edge/testing' >> /etc/apk/repositories
+# RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' >> /etc/apk/repositories \
+#	&& echo 'http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories
 
 # Mirror mirror switch to Alpine Linux - http://dl-4.alpinelinux.org/alpine/
- RUN echo "@edge-main http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
-     && echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-     && echo "@edge-testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
-
-RUN apk add \
-    php7@edge-community \
-    php7-dev@edge-community \
-    php7-common@edge-community \
-    php7-apcu@edge-community \
-    php7-bcmath@edge-community \
-    php7-xmlwriter@edge-community \
-    php7-ctype@edge-community \
-    php7-curl@edge-community \
-    php7-exif@edge-community \
-    php7-iconv@edge-community \
-    php7-intl@edge-community \
-    php7-json@edge-community \
-    php7-mbstring@edge-community \
-    php7-opcache@edge-community \
-    php7-openssl@edge-community \
-    php7-pcntl@edge-community \
-    php7-pdo@edge-community \
-    php7-mysqlnd@edge-community \
-    php7-pdo_mysql@edge-community \
-    php7-pdo_pgsql@edge-community \
-    php7-phar@edge-community \
-    php7-posix@edge-community \
-    php7-session@edge-community \
-    php7-xml@edge-community \
-    php7-simplexml@edge-community \
-    php7-mcrypt@edge-community \
-    php7-xsl@edge-community \
-    php7-zip@edge-community \
-    php7-zlib@edge-community \
-    php7-dom@edge-community \
-    php7-redis@edge-community \
-    php7-tokenizer@edge-community \
-    \
-    php7-gd@edge-community \
-    composer@edge-testing 
+RUN apk update \
+	&& apk upgrade \
+	&& apk add \
+	curl \
+    php7 \
+    php7-dev \
+    php7-common \
+    php7-apcu \
+    php7-bcmath \
+    php7-xmlwriter \
+    php7-ctype \
+    php7-curl \
+    php7-exif \
+    php7-iconv \
+    php7-intl \
+    php7-json \
+    php7-mbstring \
+    php7-opcache \
+    php7-openssl \
+    php7-pcntl \
+    php7-pdo \
+    php7-mysqlnd \
+    php7-pdo_mysql \
+    php7-pdo_pgsql \
+    php7-phar \
+    php7-posix \
+    php7-session \
+    php7-xml \
+    php7-simplexml \
+    php7-mcrypt \
+    php7-xsl \
+    php7-zip \
+    php7-zlib \
+    php7-dom \
+    php7-redis \
+    php7-tokenizer \
+    php7-gd
 
 RUN ln -s /usr/bin/php7 /usr/bin/php
+
+# composer
+RUN curl -sS https://getcomposer.org/installer | \
+    php -- --install-dir=/usr/bin/ --filename=composer
 
 CMD ["php", "-a"]
