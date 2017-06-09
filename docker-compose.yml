@@ -13,7 +13,7 @@ services:
     volumes:
       - ./nginx/logs:/var/log/nginx
     links:
-      - lnmp-php-fpm:php-fpm
+      - php-fpm:php-fpm
   # PHP-FPM
   php-fpm:
     build: ./php-fpm
