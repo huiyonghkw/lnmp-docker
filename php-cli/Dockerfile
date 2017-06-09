@@ -7,8 +7,8 @@ MAINTAINER bravist <chenghuiyong1987@gmail.com>
 # https://pkgs.alpinelinux.org/packages
 
 # Mirror mirror switch to Ali-OSM (Alibaba Open Source Mirror Site) - http://mirrors.aliyun.com/
-# RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' >> /etc/apk/repositories \
-#	&& echo 'http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories
+RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' >> /etc/apk/repositories \
+	&& echo 'http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories
 
 # Mirror mirror switch to Alpine Linux - http://dl-4.alpinelinux.org/alpine/
 RUN apk update \
