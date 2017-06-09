@@ -16,9 +16,7 @@ RUN echo '@edge-main http://mirrors.aliyun.com/alpine/latest-stable/main' >> /et
 #     && echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
 #     && echo "@edge-testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
 
-RUN apk update \ 
-	&& apk upgrade  \
-	&& apk add \
+RUN apk add \
     php7@edge-community \
     php7-dev@edge-community \
     php7-common@edge-community \
