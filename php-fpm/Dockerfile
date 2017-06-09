@@ -18,9 +18,9 @@ RUN apk update \
 	    php7-fpm@community \
 
 	 && rm -rf /var/cache/apk/* 
-	 
+
 EXPOSE 9000
 
-CMD ["php-fpm7"]
+CMD ["/usr/sbin/php-fpm7"]
 
 

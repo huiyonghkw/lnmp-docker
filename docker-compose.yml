@@ -23,9 +23,6 @@ services:
       #source code container
     volumes_from:
       - www
-    volumes:
-      #php.ini
-      - ./php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
     links:
       - mariadb
       - redis
