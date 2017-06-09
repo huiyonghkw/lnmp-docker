@@ -17,7 +17,7 @@ services:
   # PHP-FPM
   php-fpm:
     build: ./php-fpm
-    container_name: lnmp-php-fpm
+    container_name: php-fpm
     ports:
       - "9000:9000"
       #source code container
