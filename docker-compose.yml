@@ -81,12 +81,10 @@ services:
       - MYSQL_ROOT_PASSWORD=developer
   # Redis
   redis:
-    image: redis:3.0-alpine
+    image: ./redis
     container_name: lnmp-redis
     ports:
       - "6379:6379"
-    volumes:
-      - ./redis/data:/var/lib/redis:Z
   # Web application code container
   www:
     image: tianon/true

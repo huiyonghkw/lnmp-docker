@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1.13.1-alpine
 
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
