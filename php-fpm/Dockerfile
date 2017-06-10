@@ -19,7 +19,7 @@ RUN apk update \
 
 	 && rm -rf /var/cache/apk/* 
 
-RUN mkdir -P /usr/share/nginx/html
+RUN mkdir -p /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html
 
