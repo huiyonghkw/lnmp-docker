@@ -23,9 +23,9 @@ ENV PHP_MAX_POST        100M
 # Mirror mirror switch to Alpine Linux - http://dl-4.alpinelinux.org/alpine/
 RUN apk update \
 	&& apk upgrade \
-	&& apk add --update tzdata && \
-	&& cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
-	&& echo "${TIMEZONE}" > /etc/timezone && \
+	&& apk add --update tzdata \
+	&& cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+	&& echo "${TIMEZONE}" > /etc/timezone \
 	&& apk add \
 	    php7-fpm@community \
  	&& rm -rf /var/cache/apk/* \
