@@ -24,7 +24,10 @@ ENV PHP_MAX_POST        100M
 RUN apk update \
 	&& apk upgrade \
 	&& apk add \
+		tzdata \
 	    php7-fpm@community \
+	&& cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+	&& echo "${TIMEZONE}" > /etc/timezone \
  	&& rm -rf /var/cache/apk/* 
 
 # Set environments
