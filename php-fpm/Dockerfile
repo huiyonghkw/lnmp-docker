@@ -19,9 +19,13 @@ RUN apk update \
 
 	 && rm -rf /var/cache/apk/* 
 
-EXPOSE 9000
+RUN mkdir -P /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html
+
+VOLUME /usr/share/nginx/html
+
+EXPOSE 9000
 
 CMD ["/usr/sbin/php-fpm7", "-R", "--nodaemonize"]
 
