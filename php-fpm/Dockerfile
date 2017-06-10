@@ -1,6 +1,6 @@
 # https://github.com/jorge07/alpine-php
 
-#FROM bravist/php-cli-alpine-aliyun-app:1.0
+FROM bravist/php-cli-alpine-aliyun-app:1.0
 
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
