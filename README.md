@@ -5,7 +5,7 @@
 ## 主要特性
 
 + 基于[Alpine Linux](https://alpinelinux.org/) 与 [Debian](https://www.debian.org/index.zh-cn.html) 构建不同基础镜像。master分支基于[Ali-OSM](http://mirrors.aliyun.com/) 加速，在国内环境，5分钟快速完成构建容器集群，alpine 分支基于 [Alpine Linux ](http://dl-4.alpinelinux.org/alpine/)官方镜像，适应非国内环境。debian 分支基于 Docker 官方 debian基础镜像，整体镜像尺寸相对较大。
-+ 构建干净、轻量级PHP依赖环境、安装常用PHP扩展，支持PHP CLI 与 PHP FPM 模式。PHP CLI 适用于命令行交互的项目，PHP FPM 搭配 Nginx，构建PHP Web应用环境。另外，PHP FPM镜像基于 PHP CLI基础镜像，最小化PHP容器镜像，高效利用资源。
++ 构建干净、轻量级PHP依赖环境、安装常用PHP扩展与Composer，支持PHP CLI 与 PHP FPM 模式。PHP CLI 适用于命令行交互的项目，PHP FPM 搭配 Nginx，构建PHP Web应用环境。另外，PHP FPM镜像基于 PHP CLI基础镜像，最小化PHP容器镜像，高效利用资源。
 + [Docker Hub 官网](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=bravist&starCount=0)保留不同Linux版本、不同地域环境的PHP基础镜像。为提高在国内Docker image 构建速度，PHP容器基于阿里巴巴开源镜像服务 -[ALi-OSM Alpine](https://mirrors.aliyun.com/alpine/edge/) 快速完成容器构建。非国内环境，建议克隆[项目 alpine 分支](https://github.com/bravist/lnmp-docker/tree/alpine)实现快速构建，同样也可以尝试debain分支。
 + 提供PHP CLI模式独立运行容器：`call-websockt` 与 `php-superviosr`。`call-websockt`运行基于[workman](http://www.workerman.net/) 的PHP Socket服务。`php-supervior` 实现基于Supervisor的队列服务。
 + 独立配置容器运行时文件、容器运行日志与数据与宿主机分离，方便调试与再次构建容器。
