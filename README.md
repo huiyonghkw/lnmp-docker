@@ -1,6 +1,6 @@
 # LNMP Docker 
 
-快速构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
+3分钟构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
 
 ## 主要特性
 
