@@ -47,6 +47,9 @@ $ sudo systemctl enable docker
 
 $ sudo systemctl start docker
 
+# Add docker group
+$ sudo groupadd docker
+
 # Add user to docker group
 $ sudo usermod -aG docker $USER
 ```
