@@ -184,8 +184,6 @@ docker.io/nginx                               1.13.1-alpine       7ebd6770d0d6  
 
 ##  特别引用
 
-+ https://yeasy.gitbooks.io/docker_practice/content/install/centos.html
-
-+ https://cr.console.aliyun.com/?spm=5176.2020520152.210.d103.H4Rlih#/accelerator
+> [Docker -- 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/install/centos.html)
 
   ​
