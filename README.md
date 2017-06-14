@@ -28,8 +28,6 @@
 
 > [阿里云ECS安装Docker](https://help.aliyun.com/document_detail/51853.html)
 
-> [阿里云Docker Hub加速器，需要开通阿里云账户](https://cr.console.aliyun.com/#/accelerator)
-
 
 ```bash
 $ sudo yum install -y yum-utils
@@ -52,6 +50,22 @@ $ sudo usermod -aG docker $USER
 $ sudo systemctl enable docker
 
 $ sudo systemctl start docker
+```
+
+#### 阿里云Docker Hub镜像站点加速
+
+[阿里云Docker Hub加速器](https://cr.console.aliyun.com/#/accelerator)，需要开通阿里云账户，每一个账户拥有专属加速地址。
+
+```bash
+$ sudo mkdir -p /etc/docker
+$ sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://muehonsf.mirror.aliyuncs.com"]
+}
+EOF
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+
 ```
 
 #### 安装Docker Compose 
