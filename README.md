@@ -26,6 +26,11 @@
 
 ​	安装Docker 在不同平台、不同地域环境、不同操作系统中的方式不尽相同，这里还是推荐使用[官方CentOS](https://docs.docker.com/engine/installation/linux/centos/)安装方式，其他方法请自行搜索，另外，特别推荐使用阿里云提供的Docker Hub 镜像站点，为你提供专属Docker加速服务。
 
+> [阿里云ECS安装Docker](https://help.aliyun.com/document_detail/51853.html)
+
+> [阿里云Docker Hub加速器，需要开通阿里云账户](https://cr.console.aliyun.com/#/accelerator)
+
+
 ```bash
 $ sudo yum install -y yum-utils
 
