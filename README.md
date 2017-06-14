@@ -18,9 +18,8 @@
 ### 项目依赖
 
 + CentOS 7
-+ Git
 + Docker 1.12 （Docker要求64位的系统且内核版本至少为3.10）
-+ Docker Compose 
++ Docker Compose
 
 ### 安装Docker 
 
@@ -80,11 +79,13 @@ $ chmod +x /usr/local/bin/docker-compose
 
 ### 安装LNMP Docker 
 
-1.   克隆项目Git仓库，非国内用户请在克隆后，切换到本地alpine分支。
+1.   克隆项目Git仓库，非国内用户请在克隆后，切换到alpine分支。
 
      ```bash
      $ git clone https://github.com/bravist/lnmp-docker
      ```
+
+     如果系统未安装git， 可以下载[源码压缩包](https://github.com/bravist/lnmp-docker/releases/tag/1.0)进行安装。
 
 2. 拷贝`.env.example`文件，配置项目环境变量，注意，在容器运行成功后，需要再次修改`.env` 文件，保证多个项目之间的程序互通。
 
