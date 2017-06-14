@@ -42,16 +42,16 @@ $ sudo yum makecache fast
 
 $ sudo yum -y install docker-ce
 
-## start up docker
-$ sudo systemctl enable docker
-
-$ sudo systemctl start docker
-
 # Add docker group
 $ sudo groupadd docker
 
 # Add user to docker group
 $ sudo usermod -aG docker $USER
+
+## start up docker
+$ sudo systemctl enable docker
+
+$ sudo systemctl start docker
 ```
 
 #### 安装Docker Compose 
