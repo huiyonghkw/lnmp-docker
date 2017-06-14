@@ -182,7 +182,7 @@ docker.io/mariadb                             latest              ea0322bb4096  
 docker.io/nginx                               1.13.1-alpine       7ebd6770d0d6        10 days ago         15.49 MB
 ```
 
-##  特别引用
+##  参考
 
 > [Docker -- 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/install/centos.html)
 
