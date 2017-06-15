@@ -12,6 +12,9 @@ RUN apk update \
 	&& apk upgrade \
 	&& apk add logrotate \
 	&& rm -rf /var/cache/apk/* 
+
+COPY ./nginx /etc/logrotate.d/nginx
+
 RUN echo "0       2       *       *       *       /usr/sbin/logrotate -f /etc/logrotate.d/nginx"  >> /var/spool/cron/crontabs/root
 
 CMD ["/usr/sbin/crond"]

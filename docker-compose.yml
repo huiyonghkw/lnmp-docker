@@ -2,7 +2,7 @@ version: '2'
 services:
   # Web Server
   nginx:
-    build: bravist/nginx:1.0
+    image: bravist/nginx:1.0
     container_name: lnmp-nginx
     ports:
       - "80:80"
