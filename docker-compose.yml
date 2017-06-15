@@ -2,7 +2,7 @@ version: '2'
 services:
   # Web Server
   nginx:
-    image: bravist/nginx:1.2
+    image: bravist/nginx:1.4
     container_name: lnmp-nginx
     ports:
       - "80:80"
@@ -11,7 +11,10 @@ services:
     volumes_from:
       - www
     volumes:
-      - ./nginx/logs:/var/log/nginx
+      - "./nginx/logs:/var/log/nginx"
+      - "./nginx:/etc/nginx"
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+      - "./nginx/cert:/etc/nginx/cert"
     links:
       - php-fpm:php-fpm
   # PHP-FPM
