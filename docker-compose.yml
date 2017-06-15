@@ -2,7 +2,7 @@ version: '2'
 services:
   # Web Server
   nginx:
-    image: bravist/nginx:1.0
+    image: bravist/nginx:1.1
     container_name: lnmp-nginx
     ports:
       - "80:80"
@@ -12,14 +12,6 @@ services:
       - www
     volumes:
       - ./nginx/logs:/var/log/nginx
-    links:
-      - php-fpm:php-fpm
-  # nginx-logger
-  logger-crond: 
-    build: ./logger-crond
-    container_name: lnmp-logger-crond
-    volumes:
-      - ../nginx/logs:/var/log/nginx
     links:
       - php-fpm:php-fpm
   # PHP-FPM
