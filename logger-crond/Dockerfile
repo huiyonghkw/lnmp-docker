@@ -17,4 +17,4 @@ COPY ./nginx /etc/logrotate.d/nginx
 
 RUN echo "0       2       *       *       *       /usr/sbin/logrotate -f /etc/logrotate.d/nginx"  >> /var/spool/cron/crontabs/root
 
-CMD ["/usr/sbin/crond"]
+CMD ["/usr/sbin/crond", "-S", "/var/spool/cron/crontabs/root", "-f "]
