@@ -32,6 +32,30 @@ services:
       - "${PHP_FPM_DOMAIN5}:${DOCKER_HOST_IP}"
     env_file: 
       - .env
+  php-supervisor:
+    build: ./php-supervisor
+    container_name: lnmp-php-supervisor
+    volumes:
+      - ./php-supervisor/supervisor/log:/var/log/supervisor
+    volumes_from:
+       - www
+    extra_hosts:
+      - "${SUPERVISOR_DOMAIN}:${DOCKER_HOST_IP}"
+      - "${SUPERVISOR_DOMAIN2}:${DOCKER_HOST_IP}"
+      - "${SUPERVISOR_DOMAIN3}:${DOCKER_HOST_IP}"
+      - "${SUPERVISOR_DOMAIN4}:${DOCKER_HOST_IP}"
+      - "${SUPERVISOR_DOMAIN5}:${DOCKER_HOST_IP}"
+    env_file: 
+      - .env
+  call-websocket:
+    build: ./call-websocket
+    container_name: lnmp-call-websocket
+    volumes_from:
+      - www
+    ports:
+      - "8190:8190"
+      - "8191:8191"
+    restart: always
   # Web application code container
   www:
     image: tianon/true
