@@ -10,5 +10,5 @@ RUN mkdir -p /etc/nginx/cert \
 #COPY ./conf.d/ /etc/nginx/conf.d/
 #COPY ./cert/ /etc/nginx/cert/
 
-VOLUME ["/var/log/nginx", "/etc/nginx", "/etc/nginx/conf.d", "/etc/nginx/cert/"]
+VOLUME ["/var/log/nginx", "/etc/nginx", "/etc/nginx/conf.d", "/etc/nginx/cert"]
 
