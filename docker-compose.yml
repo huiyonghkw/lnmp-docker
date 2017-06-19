@@ -67,6 +67,7 @@ services:
     container_name: lnmp-php-crond
     volumes_from:
       - "www"
+      - "./php-crond/crontabs:/var/log/cron"
   # MariaDB - One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
   mariadb:
     image: mariadb

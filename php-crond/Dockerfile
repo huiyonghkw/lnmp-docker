@@ -1,8 +1,15 @@
 FROM bravist/php-cli-alpine-aliyun-app:1.0
 
-COPY ./crontabs/ /var/spool/cron/crontabs/
+COPY ./crontabs/crontab /var/spool/cron/crontabs/
+
+RUN copy /var/spool/cron/crontabs/crontab >> /var/spool/cron/crontabs/root
 
 WORKDIR /var/spool/cron/crontabs
 
-CMD ["/usr/sbin/crond", "-f"]
+RUN mkdir -p /var/log/cron \
+	&& touch /var/log/cron/cron.log
+
+VOLUME /var/log/cron
+
+CMD ["/usr/sbin/crond", "-f", "-L", "/var/log/cron/cron.log"]
 
