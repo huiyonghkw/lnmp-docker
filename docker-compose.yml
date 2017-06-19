@@ -56,6 +56,13 @@ services:
       - "8190:8190"
       - "8191:8191"
     restart: always
+  php-crond:
+    build: ./php-crond
+    container_name: lnmp-php-crond
+    volumes_from:
+      - "www"
+    volumes:
+      - "./php-crond/crontabs:/var/log/cron"
   # Web application code container
   www:
     image: tianon/true
