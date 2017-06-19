@@ -1,8 +1,8 @@
 FROM bravist/php-cli-alpine-aliyun-app:1.0
 
-COPY ./crontabs/crontab /var/spool/cron/crontabs/
+COPY ./crontabs/default /var/spool/cron/crontabs/
 
-RUN cat /var/spool/cron/crontabs/crontab >> /var/spool/cron/crontabs/root
+RUN cat /var/spool/cron/crontabs/default >> /var/spool/cron/crontabs/root
 
 WORKDIR /var/spool/cron/crontabs
 
