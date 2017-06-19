@@ -6,7 +6,7 @@
 
 ### 2017-06-19
 
-+ 新增`php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本。
++ 新增`php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
 
 ## 主要特性
 
