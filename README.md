@@ -4,6 +4,11 @@
 
 ## 更新日志
 
+### 2017-06-22
+
++ `bravist/php-cli-alpine-aliyun-app` 镜像版本升级1.1，增加PHP的[`mysqli`](http://php.net/manual/zh/mysqli.overview.php) 扩展支持。
+
+
 ### 2017-06-19
 
 + 新增`php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
