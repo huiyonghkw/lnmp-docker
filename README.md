@@ -6,7 +6,7 @@
 
 ### 2017-06-22
 
-+ `bravist/php-cli-alpine-aliyun-app` 镜像版本升级1.1，增加PHP的[`mysqli`](http://php.net/manual/zh/mysqli.overview.php) 扩展支持。
++ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.1`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.3`，增加PHP的[`mysqli`](http://php.net/manual/zh/mysqli.overview.php) 扩展支持。
 
 
 ### 2017-06-19
