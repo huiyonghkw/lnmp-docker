@@ -33,6 +33,7 @@ RUN apk update \
 	    php7-pcntl@community \
 	    php7-pdo@community \
 	    php7-mysqlnd@community \
+	    php7-mysqli@community \
 	    php7-pdo_mysql@community \
 	    php7-pdo_pgsql@community \
 	    php7-phar@community \
