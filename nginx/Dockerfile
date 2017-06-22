@@ -13,3 +13,5 @@ COPY ./cert/ /etc/nginx/cert/
 # mount nginx log
 VOLUME /var/log/nginx
 
+WORKDIR /usr/share/nginx/html
+

@@ -2,6 +2,12 @@
 
 3分钟构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
 
+## 更新日志
+
+### 2017-06-19
+
++ 新增`php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
+
 ## 主要特性
 
 + 基于[Alpine Linux](https://alpinelinux.org/) 与 [Debian](https://www.debian.org/index.zh-cn.html) 构建不同基础镜像。master分支基于[Ali-OSM](http://mirrors.aliyun.com/) 加速，在国内环境，5分钟快速完成构建容器集群，alpine 分支基于 [Alpine Linux ](http://dl-4.alpinelinux.org/alpine/)官方镜像，适应非国内环境。debian 分支基于 Docker 官方 debian基础镜像，整体镜像尺寸相对较大。
@@ -18,13 +24,15 @@
 ### 项目依赖
 
 + CentOS 7
-+ Git
 + Docker 1.12 （Docker要求64位的系统且内核版本至少为3.10）
-+ Docker Compose 
++ Docker Compose
 
 ### 安装Docker 
 
 ​	安装Docker 在不同平台、不同地域环境、不同操作系统中的方式不尽相同，这里还是推荐使用[官方CentOS](https://docs.docker.com/engine/installation/linux/centos/)安装方式，其他方法请自行搜索，另外，特别推荐使用阿里云提供的Docker Hub 镜像站点，为你提供专属Docker加速服务。
+
+> [阿里云ECS安装Docker](https://help.aliyun.com/document_detail/51853.html)
+
 
 ```bash
 $ sudo yum install -y yum-utils
@@ -37,13 +45,32 @@ $ sudo yum makecache fast
 
 $ sudo yum -y install docker-ce
 
+# Add docker group
+$ sudo groupadd docker
+
+# Add user to docker group
+$ sudo usermod -aG docker $USER
+
 ## start up docker
 $ sudo systemctl enable docker
 
 $ sudo systemctl start docker
+```
 
-# Add user to docker group
-$ sudo usermod -aG docker $USER
+#### 阿里云Docker Hub镜像站点加速
+
+[阿里云Docker Hub加速器](https://cr.console.aliyun.com/#/accelerator)，需要开通阿里云账户，每一个账户拥有专属加速地址。
+
+```bash
+$ sudo mkdir -p /etc/docker
+$ sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://muehonsf.mirror.aliyuncs.com"]
+}
+EOF
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+
 ```
 
 #### 安装Docker Compose 
@@ -58,11 +85,13 @@ $ chmod +x /usr/local/bin/docker-compose
 
 ### 安装LNMP Docker 
 
-1.   克隆项目Git仓库，非国内用户请在克隆后，切换到本地alpine分支。
+1.   克隆项目Git仓库，非国内用户请在克隆后，切换到alpine分支。
 
      ```bash
      $ git clone https://github.com/bravist/lnmp-docker
      ```
+
+     如果系统未安装git， 可以下载[源码压缩包](https://github.com/bravist/lnmp-docker/releases/tag/1.0)进行安装。
 
 2. 拷贝`.env.example`文件，配置项目环境变量，注意，在容器运行成功后，需要再次修改`.env` 文件，保证多个项目之间的程序互通。
 
@@ -174,10 +203,8 @@ docker.io/mariadb                             latest              ea0322bb4096  
 docker.io/nginx                               1.13.1-alpine       7ebd6770d0d6        10 days ago         15.49 MB
 ```
 
-##  特别引用
+##  参考
 
-+ https://yeasy.gitbooks.io/docker_practice/content/install/centos.html
-
-+ https://cr.console.aliyun.com/?spm=5176.2020520152.210.d103.H4Rlih#/accelerator
+> [Docker -- 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/install/centos.html)
 
   ​
