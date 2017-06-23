@@ -2,6 +2,8 @@
 
 3分钟构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
 
+![Docker](./docker.png)
+
 ## 更新日志
 
 ### 2017-06-22
