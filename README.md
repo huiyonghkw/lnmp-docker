@@ -6,6 +6,15 @@
 
 ## 更新日志
 
+### 2017-07-03
+
++ 修复`PHP error:  iconv(): Wrong charset, conversion from `CP936' to `UTF-8' is not allowed on line 1` 问题，参考下面这些内容：
+  + https://github.com/docker-library/php/issues/240
+  + https://gist.github.com/guillemcanal/be3db96d3caa315b4e2b8259cab7d07e 
+  + https://forum.alpinelinux.org/forum/installation/php-iconv-issue
+
++ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.2`
+
 ### 2017-06-22
 
 + `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.1`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.3`，增加PHP的[`mysqli`](http://php.net/manual/zh/mysqli.overview.php) 扩展支持。
