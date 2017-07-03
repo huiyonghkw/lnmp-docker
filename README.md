@@ -13,7 +13,7 @@
   + https://gist.github.com/guillemcanal/be3db96d3caa315b4e2b8259cab7d07e 
   + https://forum.alpinelinux.org/forum/installation/php-iconv-issue
 
-+ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.2`
++ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.2`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.4`
 
 ### 2017-06-22
 
