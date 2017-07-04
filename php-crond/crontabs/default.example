@@ -1,0 +1,3 @@
+# do daily/weekly/monthly maintenance
+# min   hour    day     month   weekday command
+# * 		* 		* 		*	 	* 		php /path/to/artisan schedule:run >> /dev/null 2>&1

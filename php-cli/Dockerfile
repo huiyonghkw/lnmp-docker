@@ -33,6 +33,7 @@ RUN apk update \
 	    php7-pcntl@community \
 	    php7-pdo@community \
 	    php7-mysqlnd@community \
+	    php7-mysqli@community \
 	    php7-pdo_mysql@community \
 	    php7-pdo_pgsql@community \
 	    php7-phar@community \
@@ -50,6 +51,15 @@ RUN apk update \
 	    php7-gd@community \
 
 	 && rm -rf /var/cache/apk/* 
+
+# https://github.com/docker-library/php/issues/240
+# https://gist.github.com/guillemcanal/be3db96d3caa315b4e2b8259cab7d07e 
+# https://forum.alpinelinux.org/forum/installation/php-iconv-issue
+
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+
+COPY ./php.ini /etc/php7/php.ini
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | \
