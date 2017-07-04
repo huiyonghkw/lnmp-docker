@@ -2,8 +2,30 @@
 
 3分钟构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
 
+![Docker](./docker.png)
 
 ## 更新日志
+
+### 2017-07-04
+
++ 优化`nginx` Web服务
+  + [增加`nginx`对静态资源文件的缓存支持，缓存时间2小时](https://linux.cn/article-7726-1.html)
+  + 隐藏`nginx` 与 `php` 版本号
++ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.3`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.5`
+
+### 2017-07-03
+
++ 修复`PHP error:  iconv(): Wrong charset, conversion from `CP936' to `UTF-8' is not allowed on line 1` 问题，参考下面这些内容：
+  + https://github.com/docker-library/php/issues/240
+  + https://gist.github.com/guillemcanal/be3db96d3caa315b4e2b8259cab7d07e 
+  + https://forum.alpinelinux.org/forum/installation/php-iconv-issue
+
++ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.2`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.4`
+
+### 2017-06-22
+
++ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.1`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.3`，增加PHP的[`mysqli`](http://php.net/manual/zh/mysqli.overview.php) 扩展支持。
+
 
 ### 2017-06-19
 
@@ -114,7 +136,7 @@ $ chmod +x /usr/local/bin/docker-compose
      CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                                                               NAMES
      f4452c868dcc        lnmpdocker_nginx                        "nginx -g 'daemon off"   2 hours ago         Up 2 hours          0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp                            lnmp-nginx
      15182399966b        lnmpdocker_php-supervisor               "supervisord --nodaem"   2 hours ago         Up 2 hours                                                                              lnmp-php-supervisor
-     a68c55c28995        bravist/php-fpm-alpine-aliyun-app:1.2   "/usr/sbin/php-fpm7 -"   2 hours ago         Up 2 hours          0.0.0.0:9000->9000/tcp                                              lnmp-php-fpm
+     a68c55c28995        bravist/php-fpm-alpine-aliyun-app:1.5   "/usr/sbin/php-fpm7 -"   2 hours ago         Up 2 hours          0.0.0.0:9000->9000/tcp                                              lnmp-php-fpm
      eff86b31f2ba        lnmpdocker_call-websocket               "/usr/bin/php /usr/sh"   2 hours ago         Up 2 hours          0.0.0.0:8190-8191->8190-8191/tcp                                    lnmp-call-websocket
      bd3cecff945e        mariadb                                 "docker-entrypoint.sh"   2 hours ago         Up 2 hours          0.0.0.0:3306->3306/tcp                                              lnmp-mariadb
      279b2f995b2a        lnmpdocker_redis                        "docker-entrypoint.sh"   2 hours ago         Up 2 hours          0.0.0.0:6379->6379/tcp                                              lnmp-redis
@@ -197,8 +219,8 @@ lnmpdocker_nginx                              latest              8ed67b3d522c  
 lnmpdocker_php-supervisor                     latest              28d1689ec35b        2 hours ago         160.4 MB
 lnmpdocker_redis                              latest              61cedd081dd7        2 hours ago         12.63 MB
 lnmpdocker_call-websocket                     latest              47883e0cc4cd        2 hours ago         117.9 MB
-docker.io/bravist/php-fpm-alpine-aliyun-app   1.2                 1c98507f2de3        2 hours ago         124 MB
-docker.io/bravist/php-cli-alpine-aliyun-app   1.0                 505a11124094        24 hours ago        117.9 MB
+docker.io/bravist/php-fpm-alpine-aliyun-app   1.5                 1c98507f2de3        2 hours ago         124 MB
+docker.io/bravist/php-cli-alpine-aliyun-app   1.3                505a11124094        24 hours ago        117.9 MB
 docker.io/redis                               3.0-alpine          1fbae20f0017        24 hours ago        12.63 MB
 docker.io/mariadb                             latest              ea0322bb4096        9 days ago          395.1 MB
 docker.io/nginx                               1.13.1-alpine       7ebd6770d0d6        10 days ago         15.49 MB
