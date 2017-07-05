@@ -119,8 +119,13 @@ $ chmod +x /usr/local/bin/docker-compose
 2. 拷贝`.env.example`文件，配置项目环境变量，注意，在容器运行成功后，需要再次修改`.env` 文件，保证多个项目之间的程序互通。
 
      ```bash
+     # 生成.env文件
      $ cd lnmp-docker 
      $ cp .env.example .env
+  
+     # 生成cron配置
+     $ cd php-crond/crontabs/
+     $ cp default.example default
      ```
 
 3. 构建容器集群。
