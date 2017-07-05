@@ -1,10 +1,15 @@
-# LNMP Docker 
+# LNMP Docker
 
 3分钟构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
 
 ![Docker](./docker.png)
 
 ## 更新日志
+
+### 2017-07-05
+
++ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.4`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.6`
++ 增加PHP Mongodb扩展
 
 ### 2017-07-04
 
@@ -17,7 +22,7 @@
 
 + 修复`PHP error:  iconv(): Wrong charset, conversion from `CP936' to `UTF-8' is not allowed on line 1` 问题，参考下面这些内容：
   + https://github.com/docker-library/php/issues/240
-  + https://gist.github.com/guillemcanal/be3db96d3caa315b4e2b8259cab7d07e 
+  + https://gist.github.com/guillemcanal/be3db96d3caa315b4e2b8259cab7d07e
   + https://forum.alpinelinux.org/forum/installation/php-iconv-issue
 
 + `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.2`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.4`
@@ -50,7 +55,7 @@
 + Docker 1.12 （Docker要求64位的系统且内核版本至少为3.10）
 + Docker Compose
 
-### 安装Docker 
+### 安装Docker
 
 ​	安装Docker 在不同平台、不同地域环境、不同操作系统中的方式不尽相同，这里还是推荐使用[官方CentOS](https://docs.docker.com/engine/installation/linux/centos/)安装方式，其他方法请自行搜索，另外，特别推荐使用阿里云提供的Docker Hub 镜像站点，为你提供专属Docker加速服务。
 
@@ -96,7 +101,7 @@ $ sudo systemctl restart docker
 
 ```
 
-#### 安装Docker Compose 
+#### 安装Docker Compose
 
 推荐Docker  Compose 官方[Gtihub仓库](https://github.com/docker/compose/releases)安装方式，请先选择一个版本。
 
@@ -106,7 +111,7 @@ $ curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-comp
 $ chmod +x /usr/local/bin/docker-compose
 ```
 
-### 安装LNMP Docker 
+### 安装LNMP Docker
 
 1.   克隆项目Git仓库，非国内用户请在克隆后，切换到alpine分支。
 
@@ -120,9 +125,9 @@ $ chmod +x /usr/local/bin/docker-compose
 
      ```bash
      # 生成.env文件
-     $ cd lnmp-docker 
+     $ cd lnmp-docker
      $ cp .env.example .env
-  
+
      # 生成cron配置
      $ cd php-crond/crontabs/
      $ cp default.example default
@@ -181,7 +186,7 @@ $ chmod +x /usr/local/bin/docker-compose
   $ docker rm -f contianer_name ...
 
   # 快速停止与删除容器集群
-  $ docker-compose down 
+  $ docker-compose down
 
   # 删除本地docker 镜像
   $ docker rmi -f image_name ....

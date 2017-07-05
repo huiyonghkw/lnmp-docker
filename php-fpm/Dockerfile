@@ -1,14 +1,14 @@
 # https://github.com/jorge07/alpine-php
 
-FROM bravist/php-cli-alpine-aliyun-app:1.3
+FROM bravist/php-cli-alpine-aliyun-app:1.4
 
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 
 # https://pkgs.alpinelinux.org/packages
 
 # Mirror mirror switch to Ali-OSM (Alibaba Open Source Mirror Site) - http://mirrors.aliyun.com/
-RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' > /etc/apk/repositories \ 
-	&& echo '@community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories \ 
+RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' > /etc/apk/repositories \
+	&& echo '@community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories \
 	&& echo '@testing http://mirrors.aliyun.com/alpine/edge/testing' >> /etc/apk/repositories
 
 # https://github.com/matriphe/docker-alpine-php/blob/master/7.0/FPM/Dockerfile
@@ -28,7 +28,7 @@ RUN apk update \
 	    php7-fpm@community \
 	&& cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
 	&& echo "${TIMEZONE}" > /etc/timezone \
- 	&& rm -rf /var/cache/apk/* 
+ 	&& rm -rf /var/cache/apk/*
 
 # Set environments
 RUN sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /etc/php7/php-fpm.conf && \
@@ -50,5 +50,3 @@ VOLUME /usr/share/nginx/html
 EXPOSE 9000
 
 CMD ["/usr/sbin/php-fpm7", "-R", "--nodaemonize"]
-
-
