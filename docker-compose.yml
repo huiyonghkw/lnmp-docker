@@ -91,6 +91,8 @@ services:
       - "6379:6379"
     volumes:
       - "./redis/data:/data"
+    environment:
+      - REDIS_PASSWORD=developer
   # Web application code container
   www:
     image: tianon/true
