@@ -6,31 +6,7 @@
 
 ## 更新日志
 
-### 2017-07-05
-
-+ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.4`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.6`
-+ 增加PHP Mongodb扩展
-
-### 2017-07-04
-
-+ 优化`nginx` Web服务
-  + [增加`nginx`对静态资源文件的缓存支持，缓存时间2小时](https://linux.cn/article-7726-1.html)
-  + 隐藏`nginx` 与 `php` 版本号
-+ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.3`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.5`
-
-### 2017-07-03
-
-+ 修复`PHP error:  iconv(): Wrong charset, conversion from `CP936' to `UTF-8' is not allowed on line 1` 问题，参考下面这些内容：
-  + https://github.com/docker-library/php/issues/240
-  + https://gist.github.com/guillemcanal/be3db96d3caa315b4e2b8259cab7d07e
-  + https://forum.alpinelinux.org/forum/installation/php-iconv-issue
-
-+ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.2`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.4`
-
-### 2017-06-22
-
-+ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.1`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.3`，增加PHP的[`mysqli`](http://php.net/manual/zh/mysqli.overview.php) 扩展支持。
-
+更多参考这里：https://github.com/bravist/php-fpm-alpine-aliyun-app/releases
 
 ### 2017-06-19
 
