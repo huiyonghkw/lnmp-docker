@@ -1,4 +1,4 @@
-# LNMP Docker
+# LNMP Docker - 为国内环境更快构建镜像
 
 3分钟构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
 

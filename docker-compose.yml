@@ -94,6 +94,13 @@ services:
     environment:
       - REDIS_PASSWORD=developer
   # Web application code container
+  mongo:
+    image: mongo:3.4
+    container_name: lnmp-mongo
+    volumes: 
+      - "./mongo:/data/db"
+    ports:
+      - "27017:27017"
   www:
     image: tianon/true
     container_name: lnmp-www
