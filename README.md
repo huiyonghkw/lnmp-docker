@@ -6,11 +6,14 @@
 
 
 ## 容器升级日志 
+
+### 2017-07-14
++ 建立容器虚拟网络，为`Nginx Web`容器配置静态IP，并且优化`nginx`虚拟主机之间通信规则。
+
 ### 2017-06-19
 + 新增 `php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
 
-### PHP 升级日志
-更多参考这里：https://github.com/bravist/php-fpm-alpine-aliyun-app/releases
+### [PHP 升级日志](https://github.com/bravist/php-fpm-alpine-aliyun-app/releases)
 
 
 ## 主要特性
@@ -43,7 +46,7 @@
 
 ### 安装Docker
 
-​	安装Docker 在不同平台、不同地域环境、不同操作系统中的方式不尽相同，这里还是推荐使用[官方CentOS](https://docs.docker.com/engine/installation/linux/centos/)安装方式，其他方法请自行搜索，另外，特别推荐使用阿里云提供的Docker Hub 镜像站点，为你提供专属Docker加速服务。
+​ 安装Docker 在不同平台、不同地域环境、不同操作系统中的方式不尽相同，这里还是推荐使用[官方CentOS](https://docs.docker.com/engine/installation/linux/centos/)安装方式，其他方法请自行搜索，另外，特别推荐使用阿里云提供的Docker Hub 镜像站点，为你提供专属Docker加速服务。
 
 > [阿里云ECS安装Docker](https://help.aliyun.com/document_detail/51853.html)
 
