@@ -4,23 +4,33 @@
 
 ![Docker](./docker.png)
 
-## 更新日志
 
+## 容器升级日志 
+### 2017-06-19
++ 新增 `php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
+
+### PHP 升级日志
 更多参考这里：https://github.com/bravist/php-fpm-alpine-aliyun-app/releases
 
-### 2017-06-19
-
-+ 新增`php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
 
 ## 主要特性
 
++ 使用PHP7 大版本，更多PHP 7扩展包采用Alpine Linux扩展包仓库安装。
+
 + 基于[Alpine Linux](https://alpinelinux.org/) 与 [Debian](https://www.debian.org/index.zh-cn.html) 构建不同基础镜像。master分支基于[Ali-OSM](http://mirrors.aliyun.com/) 加速，在国内环境，5分钟快速完成构建容器集群，alpine 分支基于 [Alpine Linux ](http://dl-4.alpinelinux.org/alpine/)官方镜像，适应非国内环境。debian 分支基于 Docker 官方 debian基础镜像，整体镜像尺寸相对较大。
+
 + 构建干净、轻量级PHP依赖环境、安装常用PHP扩展与Composer，支持PHP CLI 与 PHP FPM 模式。PHP CLI 适用于命令行交互的项目，PHP FPM 搭配 Nginx，构建PHP Web应用环境。另外，PHP FPM镜像基于 PHP CLI基础镜像，最小化PHP容器镜像，高效利用资源。
+
 + [Docker Hub 官网](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=bravist&starCount=0)保留不同Linux版本、不同地域环境的PHP基础镜像。为提高在国内Docker image 构建速度，PHP容器基于阿里巴巴开源镜像服务 -[ALi-OSM Alpine](https://mirrors.aliyun.com/alpine/edge/) 快速完成容器构建。非国内环境，建议克隆[项目 alpine 分支](https://github.com/bravist/lnmp-docker/tree/alpine)实现快速构建，同样也可以尝试debain分支。
+
 + 提供PHP CLI模式独立运行容器：`call-websockt` 与 `php-superviosr`。`call-websockt`运行基于[workman](http://www.workerman.net/) 的PHP Socket服务。`php-supervior` 实现基于Supervisor的队列服务。
+
 + 独立配置容器运行时文件、容器运行日志与数据与宿主机分离，方便调试与再次构建容器。
+
 + 支持Nginx 虚拟站点、SSL证书服务。配置参考Nginx中`cert` 与`conf.d`目录文件。
+
 + 支持多个虚拟站点之间的程序互通。[参考这里](https://github.com/laradock/laradock/issues/435)了解多个项目间的通信问题。
+
 + 使用Docker Compose 编排容器，支持在开发、测试、生产环境中快速完成服务器搭建任务。
 
 ## 安装LNMP Docker
