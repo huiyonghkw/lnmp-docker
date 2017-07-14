@@ -9,6 +9,7 @@
 
 ### 2017-07-14
 + 建立容器虚拟网络，为`Nginx Web`容器配置静态IP，并且优化`nginx`虚拟主机之间通信规则。
++ 新增`MongoDB` 容器，支持NoSQL 数据库。
 
 ### 2017-06-19
 + 新增 `php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
