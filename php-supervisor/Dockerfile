@@ -1,4 +1,4 @@
-FROM bravist/php-cli-alpine-aliyun-app:1.5
+FROM bravist/php-cli-alpine-aliyun-app:1.6
 
 MAINTAINER bravist <chenghuiyong1987@gmail.com>
 

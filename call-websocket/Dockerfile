@@ -1,5 +1,5 @@
 #https://yeasy.gitbooks.io/docker_practice/content/image/dockerfile/cmd.html
-FROM bravist/php-cli-alpine-aliyun-app:1.5
+FROM bravist/php-cli-alpine-aliyun-app:1.6
 
 EXPOSE 8190 8191
 
