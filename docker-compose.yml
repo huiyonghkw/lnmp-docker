@@ -139,6 +139,8 @@ services:
   apidoc:
     build: ./slate
     container_name: lnmp-apidoc
+    ports:
+      - "4567:4567"
     volumes:
       - ./slate/source:/usr/src/app/source
 
