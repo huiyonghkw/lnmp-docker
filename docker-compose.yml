@@ -135,7 +135,14 @@ services:
     volumes:
       - ./www:/usr/share/nginx/html
 
-  ### Networks Setup ############################################
+  ### API documentation Container #######################################
+  apidoc:
+    build: ./slate
+    container_name: lnmp-apidoc
+    volumes:
+      - ./slate/source:/usr/src/app/source
+
+### Networks Setup ############################################
 networks:
   web_server_network:
     driver: bridge
