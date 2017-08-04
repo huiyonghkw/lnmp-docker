@@ -1,29 +1,40 @@
-# LNMP Docker 
+# LNMP Docker - 为国内环境更快构建镜像
 
 3分钟构建开发、测试、生产L(Alpine Linux ) + N(Nginx) + M(MariaDB) + P(PHP) Docker 容器应用环境。
 
 ![Docker](./docker.png)
 
-## 更新日志
 
-### 2017-06-22
+## 容器升级日志 
 
-+ `bravist/php-cli-alpine-aliyun-app` 基础镜像版本升级至 `1.1`，`bravist/php-fpm-alpine-aliyun-app` 基础镜像版本升级至 `1.3`，增加PHP的[`mysqli`](http://php.net/manual/zh/mysqli.overview.php) 扩展支持。
-
+### 2017-07-14
++ 建立容器虚拟网络，为`Nginx Web`容器配置静态IP，并且优化`nginx`虚拟主机之间通信规则。
++ 新增`MongoDB` 容器，支持NoSQL 数据库。
 
 ### 2017-06-19
++ 新增 `php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
 
-+ 新增`php-crond` 周期性任务容器服务，采用`crontab`命令实现，支持宿主机上任意添加定时脚本（PS:`cp default.example default`）
+### [PHP 升级日志](https://github.com/bravist/php-fpm-alpine-aliyun-app/releases)
+
 
 ## 主要特性
 
++ 使用PHP7 大版本，更多PHP 7扩展包采用Alpine Linux扩展包仓库安装。
+
 + 基于[Alpine Linux](https://alpinelinux.org/) 与 [Debian](https://www.debian.org/index.zh-cn.html) 构建不同基础镜像。master分支基于[Ali-OSM](http://mirrors.aliyun.com/) 加速，在国内环境，5分钟快速完成构建容器集群，alpine 分支基于 [Alpine Linux ](http://dl-4.alpinelinux.org/alpine/)官方镜像，适应非国内环境。debian 分支基于 Docker 官方 debian基础镜像，整体镜像尺寸相对较大。
+
 + 构建干净、轻量级PHP依赖环境、安装常用PHP扩展与Composer，支持PHP CLI 与 PHP FPM 模式。PHP CLI 适用于命令行交互的项目，PHP FPM 搭配 Nginx，构建PHP Web应用环境。另外，PHP FPM镜像基于 PHP CLI基础镜像，最小化PHP容器镜像，高效利用资源。
+
 + [Docker Hub 官网](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=bravist&starCount=0)保留不同Linux版本、不同地域环境的PHP基础镜像。为提高在国内Docker image 构建速度，PHP容器基于阿里巴巴开源镜像服务 -[ALi-OSM Alpine](https://mirrors.aliyun.com/alpine/edge/) 快速完成容器构建。非国内环境，建议克隆[项目 alpine 分支](https://github.com/bravist/lnmp-docker/tree/alpine)实现快速构建，同样也可以尝试debain分支。
+
 + 提供PHP CLI模式独立运行容器：`call-websockt` 与 `php-superviosr`。`call-websockt`运行基于[workman](http://www.workerman.net/) 的PHP Socket服务。`php-supervior` 实现基于Supervisor的队列服务。
+
 + 独立配置容器运行时文件、容器运行日志与数据与宿主机分离，方便调试与再次构建容器。
+
 + 支持Nginx 虚拟站点、SSL证书服务。配置参考Nginx中`cert` 与`conf.d`目录文件。
+
 + 支持多个虚拟站点之间的程序互通。[参考这里](https://github.com/laradock/laradock/issues/435)了解多个项目间的通信问题。
+
 + 使用Docker Compose 编排容器，支持在开发、测试、生产环境中快速完成服务器搭建任务。
 
 ## 安装LNMP Docker
@@ -34,9 +45,9 @@
 + Docker 1.12 （Docker要求64位的系统且内核版本至少为3.10）
 + Docker Compose
 
-### 安装Docker 
+### 安装Docker
 
-​	安装Docker 在不同平台、不同地域环境、不同操作系统中的方式不尽相同，这里还是推荐使用[官方CentOS](https://docs.docker.com/engine/installation/linux/centos/)安装方式，其他方法请自行搜索，另外，特别推荐使用阿里云提供的Docker Hub 镜像站点，为你提供专属Docker加速服务。
+​ 安装Docker 在不同平台、不同地域环境、不同操作系统中的方式不尽相同，这里还是推荐使用[官方CentOS](https://docs.docker.com/engine/installation/linux/centos/)安装方式，其他方法请自行搜索，另外，特别推荐使用阿里云提供的Docker Hub 镜像站点，为你提供专属Docker加速服务。
 
 > [阿里云ECS安装Docker](https://help.aliyun.com/document_detail/51853.html)
 
@@ -80,7 +91,7 @@ $ sudo systemctl restart docker
 
 ```
 
-#### 安装Docker Compose 
+#### 安装Docker Compose
 
 推荐Docker  Compose 官方[Gtihub仓库](https://github.com/docker/compose/releases)安装方式，请先选择一个版本。
 
@@ -90,7 +101,7 @@ $ curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-comp
 $ chmod +x /usr/local/bin/docker-compose
 ```
 
-### 安装LNMP Docker 
+### 安装LNMP Docker
 
 1.   克隆项目Git仓库，非国内用户请在克隆后，切换到alpine分支。
 
@@ -103,8 +114,13 @@ $ chmod +x /usr/local/bin/docker-compose
 2. 拷贝`.env.example`文件，配置项目环境变量，注意，在容器运行成功后，需要再次修改`.env` 文件，保证多个项目之间的程序互通。
 
      ```bash
-     $ cd lnmp-docker 
+     # 生成.env文件
+     $ cd lnmp-docker
      $ cp .env.example .env
+
+     # 生成cron配置
+     $ cd php-crond/crontabs/
+     $ cp default.example default
      ```
 
 3. 构建容器集群。
@@ -120,7 +136,7 @@ $ chmod +x /usr/local/bin/docker-compose
      CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                                                               NAMES
      f4452c868dcc        lnmpdocker_nginx                        "nginx -g 'daemon off"   2 hours ago         Up 2 hours          0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp                            lnmp-nginx
      15182399966b        lnmpdocker_php-supervisor               "supervisord --nodaem"   2 hours ago         Up 2 hours                                                                              lnmp-php-supervisor
-     a68c55c28995        bravist/php-fpm-alpine-aliyun-app:1.2   "/usr/sbin/php-fpm7 -"   2 hours ago         Up 2 hours          0.0.0.0:9000->9000/tcp                                              lnmp-php-fpm
+     a68c55c28995        bravist/php-fpm-alpine-aliyun-app:1.5   "/usr/sbin/php-fpm7 -"   2 hours ago         Up 2 hours          0.0.0.0:9000->9000/tcp                                              lnmp-php-fpm
      eff86b31f2ba        lnmpdocker_call-websocket               "/usr/bin/php /usr/sh"   2 hours ago         Up 2 hours          0.0.0.0:8190-8191->8190-8191/tcp                                    lnmp-call-websocket
      bd3cecff945e        mariadb                                 "docker-entrypoint.sh"   2 hours ago         Up 2 hours          0.0.0.0:3306->3306/tcp                                              lnmp-mariadb
      279b2f995b2a        lnmpdocker_redis                        "docker-entrypoint.sh"   2 hours ago         Up 2 hours          0.0.0.0:6379->6379/tcp                                              lnmp-redis
@@ -160,7 +176,7 @@ $ chmod +x /usr/local/bin/docker-compose
   $ docker rm -f contianer_name ...
 
   # 快速停止与删除容器集群
-  $ docker-compose down 
+  $ docker-compose down
 
   # 删除本地docker 镜像
   $ docker rmi -f image_name ....
@@ -203,8 +219,8 @@ lnmpdocker_nginx                              latest              8ed67b3d522c  
 lnmpdocker_php-supervisor                     latest              28d1689ec35b        2 hours ago         160.4 MB
 lnmpdocker_redis                              latest              61cedd081dd7        2 hours ago         12.63 MB
 lnmpdocker_call-websocket                     latest              47883e0cc4cd        2 hours ago         117.9 MB
-docker.io/bravist/php-fpm-alpine-aliyun-app   1.2                 1c98507f2de3        2 hours ago         124 MB
-docker.io/bravist/php-cli-alpine-aliyun-app   1.0                 505a11124094        24 hours ago        117.9 MB
+docker.io/bravist/php-fpm-alpine-aliyun-app   1.5                 1c98507f2de3        2 hours ago         124 MB
+docker.io/bravist/php-cli-alpine-aliyun-app   1.3                505a11124094        24 hours ago        117.9 MB
 docker.io/redis                               3.0-alpine          1fbae20f0017        24 hours ago        12.63 MB
 docker.io/mariadb                             latest              ea0322bb4096        9 days ago          395.1 MB
 docker.io/nginx                               1.13.1-alpine       7ebd6770d0d6        10 days ago         15.49 MB
