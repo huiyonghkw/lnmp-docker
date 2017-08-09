@@ -137,7 +137,7 @@ services:
 
   ### API documentation Container #######################################
   apidoc:
-    build: ./slate
+    build: ./slate/code
     container_name: lnmp-apidoc
     ports:
       - "4567:4567"
