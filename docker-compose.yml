@@ -142,7 +142,7 @@ services:
     ports:
       - "4567:4567"
     volumes:
-      - ./slate/source:/usr/src/app/source
+      - ./slate/code/source:/usr/src/app/source
 
 ### Networks Setup ############################################
 networks:
