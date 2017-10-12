@@ -27,9 +27,6 @@ services:
       #source code container
     volumes_from:
       - www
-    links:
-      - mariadb
-      - redis
     #https://github.com/laradock/laradock/issues/435
     extra_hosts:
       - "${PHP_FPM_DOMAIN}:${NGINX_WEB_SERVER_IP}"
