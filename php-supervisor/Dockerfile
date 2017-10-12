@@ -7,8 +7,6 @@ RUN apk update \
 	&& apk add supervisor \
 	&& rm -rf /var/cache/apk/*
 
-COPY ./supervisor/ /etc/supervisor/conf.d/
-
 # Define mountable directories.
 VOLUME ["/etc/supervisor/conf.d", "/var/log/supervisor/"]
 
