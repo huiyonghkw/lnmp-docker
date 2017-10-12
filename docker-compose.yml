@@ -1,6 +1,6 @@
-version: '2.1'
+version: '2'
 services:
-  ### Nginx Web Container #######################################
+  # Web Server
   nginx:
     build: ./nginx
     container_name: lnmp-nginx
@@ -14,134 +14,27 @@ services:
       - "./nginx/logs:/var/log/nginx"
     links:
       - php-fpm:php-fpm
-    networks:
-      web_server_network:
-        ipv4_address: ${NGINX_WEB_SERVER_IP}
-
-  ### PHP-FPM Container #######################################
+  # PHP-FPM
   php-fpm:
-    image: bravist/php-fpm-alpine-aliyun-app:1.8
+    image: bravist/php-fpm-alpine-aliyun-app:1.5
     container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
       #source code container
     volumes_from:
       - www
-    links:
-      - mariadb
-      - redis
     #https://github.com/laradock/laradock/issues/435
     extra_hosts:
-      - "${PHP_FPM_DOMAIN}:${NGINX_WEB_SERVER_IP}"
-      - "${PHP_FPM_DOMAIN2}:${NGINX_WEB_SERVER_IP}"
-      - "${PHP_FPM_DOMAIN3}:${NGINX_WEB_SERVER_IP}"
-      - "${PHP_FPM_DOMAIN4}:${NGINX_WEB_SERVER_IP}"
-      - "${PHP_FPM_DOMAIN5}:${NGINX_WEB_SERVER_IP}"
-    env_file:
+      - "${PHP_FPM_DOMAIN}:${DOCKER_HOST_IP}"
+      - "${PHP_FPM_DOMAIN2}:${DOCKER_HOST_IP}"
+      - "${PHP_FPM_DOMAIN3}:${DOCKER_HOST_IP}"
+      - "${PHP_FPM_DOMAIN4}:${DOCKER_HOST_IP}"
+      - "${PHP_FPM_DOMAIN5}:${DOCKER_HOST_IP}"
+    env_file: 
       - .env
-    networks:
-      - web_server_network
-
-  ### PHP-SUPERVISOR Container #######################################
-  php-supervisor:
-    build: ./php-supervisor
-    container_name: lnmp-php-supervisor
-    volumes:
-      - ./php-supervisor/supervisor/log:/var/log/supervisor
-      - ./php-supervisor/supervisor:/etc/supervisor/conf.d
-    volumes_from:
-       - www
-    links:
-      - mariadb
-      - redis
-    extra_hosts:
-      - "${SUPERVISOR_DOMAIN}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN2}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN3}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN4}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN5}:${NGINX_WEB_SERVER_IP}"
-    env_file:
-      - .env
-    networks:
-      - web_server_network
-
-  ### CALL-WEBSOCKET Container #######################################
-  call-websocket:
-    build: ./call-websocket
-    container_name: lnmp-call-websocket
-    volumes_from:
-      - www
-    ports:
-      - "8190:8190"
-      - "8191:8191"
-    networks:
-      - web_server_network
-
-  ### PHP-CROND Container #######################################
-  php-crond:
-    build: ./php-crond
-    container_name: lnmp-php-crond
-    volumes_from:
-      - "www"
-    volumes:
-      - "./php-crond/crontabs:/var/log/cron"
-    networks:
-      - web_server_network
-
-  ### MariaDB Container #######################################
-  # MariaDB - One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
-  mariadb:
-    image: mariadb
-    container_name: lnmp-mariadb
-    ports:
-      - "3306:3306"
-    volumes:
-      # NOTE: your data will be stored in ./mysql
-      - ./mariadb/data/mysql:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=mysql
-      - MYSQL_USER=developer
-      - MYSQL_PASSWORD=developer
-      - MYSQL_ROOT_PASSWORD=developer
-    networks:
-      - web_server_network
-
-  ### REDIS Container #######################################
-  redis:
-    build: ./redis
-    container_name: lnmp-redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - "./redis/data:/data"
-    environment:
-      - REDIS_PASSWORD=developer
-    networks:
-      - web_server_network
-
-
-  ### MongoDB Container #######################################
-  # mongo:
-  #   image: mongo:3.4
-  #   container_name: lnmp-mongo
-  #   volumes: 
-  #     - "./mongo:/data/db"
-  #   ports:
-  #     - "27017:27017"
-
-  ### Web-Root Container #######################################
+  # Web application code container
   www:
     image: tianon/true
     container_name: lnmp-www
     volumes:
       - ./www:/usr/share/nginx/html
-
-### Networks Setup ############################################
-networks:
-  web_server_network:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-      - subnet: "${WEB_SERVER_SUBNET}"
-        gateway: "${WEB_SERVER_GATEWAY}"
