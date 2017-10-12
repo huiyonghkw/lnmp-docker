@@ -48,6 +48,7 @@ services:
     container_name: lnmp-php-supervisor
     volumes:
       - ./php-supervisor/supervisor/log:/var/log/supervisor
+      - ./php-supervisor/supervisor:/etc/supervisor/conf.d
     volumes_from:
        - www
     links:
@@ -120,13 +121,13 @@ services:
 
 
   ### MongoDB Container #######################################
-  mongo:
-    image: mongo:3.4
-    container_name: lnmp-mongo
-    volumes: 
-      - "./mongo:/data/db"
-    ports:
-      - "27017:27017"
+  # mongo:
+  #   image: mongo:3.4
+  #   container_name: lnmp-mongo
+  #   volumes: 
+  #     - "./mongo:/data/db"
+  #   ports:
+  #     - "27017:27017"
 
   ### Web-Root Container #######################################
   www:
