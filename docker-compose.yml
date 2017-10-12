@@ -1,6 +1,6 @@
-version: '2'
+version: '2.1'
 services:
-  # Web Server
+   ### Nginx Web Container #######################################
   nginx:
     build: ./nginx
     container_name: lnmp-nginx
@@ -14,9 +14,12 @@ services:
       - "./nginx/logs:/var/log/nginx"
     links:
       - php-fpm:php-fpm
-  # PHP-FPM
+    networks:
+      web_server_network:
+        ipv4_address: ${NGINX_WEB_SERVER_IP}
+   ### PHP-FPM Container #######################################
   php-fpm:
-    image: bravist/php-fpm-alpine-aliyun-app:1.5
+    image: bravist/php-fpm-alpine-aliyun-app:1.8
     container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
@@ -32,11 +35,15 @@ services:
       - "${PHP_FPM_DOMAIN5}:${DOCKER_HOST_IP}"
     env_file: 
       - .env
+    networks:
+      - web_server_network
+  ### PHP-SUPERVISOR Container #######################################
   php-supervisor:
     build: ./php-supervisor
     container_name: lnmp-php-supervisor
     volumes:
       - ./php-supervisor/supervisor/log:/var/log/supervisor
+      - ./php-supervisor/supervisor:/etc/supervisor/conf.d
     volumes_from:
        - www
     extra_hosts:
@@ -47,6 +54,9 @@ services:
       - "${SUPERVISOR_DOMAIN5}:${DOCKER_HOST_IP}"
     env_file: 
       - .env
+    networks:
+      - web_server_network
+  ### CALL-WEBSOCKET Container #######################################
   call-websocket:
     build: ./call-websocket
     container_name: lnmp-call-websocket
@@ -55,7 +65,9 @@ services:
     ports:
       - "8190:8190"
       - "8191:8191"
-    restart: always
+    networks:
+      - web_server_network
+  ### PHP-CROND Container #######################################
   php-crond:
     build: ./php-crond
     container_name: lnmp-php-crond
@@ -63,9 +75,20 @@ services:
       - "www"
     volumes:
       - "./php-crond/crontabs:/var/log/cron"
-  # Web application code container
+    networks:
+      - web_server_network
+  ### Web-Root Container #######################################
   www:
     image: tianon/true
     container_name: lnmp-www
     volumes:
       - ./www:/usr/share/nginx/html
+  ### Networks Setup ############################################
+networks:
+  web_server_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: "${WEB_SERVER_SUBNET}"
+        gateway: "${WEB_SERVER_GATEWAY}"
