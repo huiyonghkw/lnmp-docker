@@ -1,4 +1,4 @@
-FROM bravist/php-cli-alpine-aliyun-app:1.7
+FROM bravist/php-cli-alpine-aliyun-app:1.8
 
 COPY ./crontabs/default /var/spool/cron/crontabs/
 
