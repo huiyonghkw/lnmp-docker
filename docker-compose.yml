@@ -77,6 +77,18 @@ services:
     networks:
       - web_server_network
 
+  ### Laravel QrCode WebSocket Container #######################################
+  laravel-qrcode-websocket:
+    build: ./laravel-qrcode-websocket
+    container_name: lnmp-laravel-qrcode-websocket
+    volumes_from:
+      - www
+    ports:
+      - "8192:8192"
+      - "8193:8193"
+    networks:
+      - web_server_network
+
   ### PHP-CROND Container #######################################
   php-crond:
     build: ./php-crond
