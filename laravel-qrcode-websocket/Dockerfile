@@ -4,7 +4,7 @@
 #SOCKET_PORT=8192
 #SOCKET_PUBLIC_PORT=8192
 #SOCKET_ADDRESS=0.0.0.0
-FROM bravist/php-cli-alpine-aliyun-app:1.8
+FROM bravist/php-cli-alpine-aliyun-app:1.9
 
 EXPOSE 8192 8193
 
