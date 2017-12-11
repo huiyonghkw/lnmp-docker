@@ -7,7 +7,7 @@
 
 ## 容器升级日志 
 
-> More upgrade see release log - https://github.com/bravist/lnmp-docker/releases 
+>More upgrade:  https://github.com/bravist/lnmp-docker/releases 
 
 ### 2017-07-14
 + 建立容器虚拟网络，为`Nginx Web`容器配置静态IP，并且优化`nginx`虚拟主机之间通信规则。
