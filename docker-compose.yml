@@ -103,7 +103,7 @@ services:
   ### MariaDB Container #######################################
   # MariaDB - One of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
   mariadb:
-    image: mariadb:10.1
+    image: mariadb:10.2
     container_name: lnmp-mariadb
     ports:
       - "3306:3306"
