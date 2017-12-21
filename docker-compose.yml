@@ -19,7 +19,7 @@ services:
         ipv4_address: ${NGINX_WEB_SERVER_IP}
    ### PHP-FPM Container #######################################
   php-fpm:
-    image: bravist/php-fpm-alpine-aliyun-app:1.8
+    image: bravist/php-fpm-alpine-aliyun-app:1.13
     container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
@@ -33,7 +33,7 @@ services:
       - "${PHP_FPM_DOMAIN3}:${DOCKER_HOST_IP}"
       - "${PHP_FPM_DOMAIN4}:${DOCKER_HOST_IP}"
       - "${PHP_FPM_DOMAIN5}:${DOCKER_HOST_IP}"
-    env_file: 
+    env_file:
       - .env
     networks:
       - web_server_network
@@ -52,7 +52,7 @@ services:
       - "${SUPERVISOR_DOMAIN3}:${DOCKER_HOST_IP}"
       - "${SUPERVISOR_DOMAIN4}:${DOCKER_HOST_IP}"
       - "${SUPERVISOR_DOMAIN5}:${DOCKER_HOST_IP}"
-    env_file: 
+    env_file:
       - .env
     networks:
       - web_server_network
