@@ -20,7 +20,7 @@ services:
 
   ### PHP-FPM Container #######################################
   php-fpm:
-    image: bravist/php-fpm-alpine-aliyun-app:1.12
+    image: bravist/php-fpm-alpine-aliyun-app:1.13
     container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
@@ -136,7 +136,7 @@ services:
   # mongo:
   #   image: mongo:3.4
   #   container_name: lnmp-mongo
-  #   volumes: 
+  #   volumes:
   #     - "./mongo:/data/db"
   #   ports:
   #     - "27017:27017"
