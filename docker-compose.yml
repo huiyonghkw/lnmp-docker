@@ -28,7 +28,7 @@ services:
     volumes_from:
       - www
     volumes: 
-      - "./nginx/logs/php-fpm:/usr/local/var/log"
+      - "./nginx/logs/php-fpm:/usr/local/var/log/php7"
     links:
       - mariadb
       - redis
