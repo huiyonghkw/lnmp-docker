@@ -12,6 +12,7 @@ services:
       - www
     volumes:
       - "./nginx/logs:/var/log/nginx"
+      - "./nginx/socket:/var/run"
     links:
       - php-fpm:php-fpm
     networks:
@@ -20,7 +21,7 @@ services:
 
   ### PHP-FPM Container #######################################
   php-fpm:
-    image: bravist/php-fpm-alpine-aliyun-app:1.14
+    image: bravist/php-fpm-alpine-aliyun-app:1.15
     container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
@@ -29,6 +30,7 @@ services:
       - www
     volumes: 
       - "./nginx/logs/php-fpm:/usr/local/var/log/php7"
+      - "./nginx/socket:/var/run"
     links:
       - mariadb
       - redis
