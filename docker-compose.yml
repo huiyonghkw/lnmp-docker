@@ -28,7 +28,7 @@ services:
       #source code container
     volumes_from:
       - www
-    volumes: 
+    volumes:
       - "./nginx/logs/php-fpm:/usr/local/var/log/php7"
       - "./nginx/socket:/var/run"
     links:
