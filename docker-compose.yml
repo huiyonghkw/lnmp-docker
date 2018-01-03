@@ -39,6 +39,7 @@ services:
       - "${PHP_FPM_DOMAIN3}:${NGINX_WEB_SERVER_IP}"
       - "${PHP_FPM_DOMAIN4}:${NGINX_WEB_SERVER_IP}"
       - "${PHP_FPM_DOMAIN5}:${NGINX_WEB_SERVER_IP}"
+      - "${PHP_FPM_DOMAIN6}:${NGINX_WEB_SERVER_IP}"
     env_file:
       - .env
     networks:
@@ -62,6 +63,7 @@ services:
       - "${SUPERVISOR_DOMAIN3}:${NGINX_WEB_SERVER_IP}"
       - "${SUPERVISOR_DOMAIN4}:${NGINX_WEB_SERVER_IP}"
       - "${SUPERVISOR_DOMAIN5}:${NGINX_WEB_SERVER_IP}"
+      - "${SUPERVISOR_DOMAIN6}:${NGINX_WEB_SERVER_IP}"
     env_file:
       - .env
     networks:
