@@ -12,6 +12,7 @@ services:
       - www
     volumes:
       - "./nginx/logs:/var/log/nginx"
+      - "./nginx/socket:/var/run"
     links:
       - php-fpm:php-fpm
     networks:
