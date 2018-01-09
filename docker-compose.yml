@@ -19,15 +19,13 @@ services:
         ipv4_address: ${NGINX_WEB_SERVER_IP}
    ### PHP-FPM Container #######################################
   php-fpm:
-    image: bravist/php-fpm-alpine-aliyun-app:1.14
+    image: bravist/php-fpm-alpine-aliyun-app:1.15
     container_name: lnmp-php-fpm
-    ports:
-      - "9000:9000"
-      #source code container
     volumes_from:
       - www
     volumes: 
       - "./nginx/logs/php-fpm:/usr/local/var/log/php7"
+      - "./nginx/socket:/var/run"
     #https://github.com/laradock/laradock/issues/435
     extra_hosts:
       - "${PHP_FPM_DOMAIN}:${NGINX_WEB_SERVER_IP}"
