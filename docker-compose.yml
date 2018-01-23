@@ -90,15 +90,6 @@ services:
     ports:
       - "8192:8192"
       - "8193:8193"
-    extra_hosts:
-      - "${SUPERVISOR_DOMAIN}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN2}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN3}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN4}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN5}:${NGINX_WEB_SERVER_IP}"
-      - "${SUPERVISOR_DOMAIN6}:${NGINX_WEB_SERVER_IP}"
-    env_file:
-      - .env
     networks:
       - web_server_network
 
