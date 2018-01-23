@@ -32,7 +32,6 @@ services:
     links:
       - mariadb
       - redis
-      - laravel-qrcode-websocket
     #https://github.com/laradock/laradock/issues/435
     extra_hosts:
       - "${PHP_FPM_DOMAIN}:${NGINX_WEB_SERVER_IP}"
