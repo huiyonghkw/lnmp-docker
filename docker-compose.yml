@@ -21,7 +21,7 @@ services:
 
   ### PHP-FPM Container #######################################
   php-fpm:
-    image: bravist/php-fpm-alpine-aliyun-app:1.15
+    image: bravist/php-fpm-alpine-aliyun-app:1.16
     container_name: lnmp-php-fpm
     ports:
       - "9000:9000"
