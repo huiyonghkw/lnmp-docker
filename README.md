@@ -42,7 +42,7 @@ $ curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-comp
 $ chmod +x /usr/local/bin/docker-compose
 ```
 
-### 安装LNMP Docker
+## 安装LNMP Docker
 
 1. 克隆Git仓库。需要提前安装好Git。
 
