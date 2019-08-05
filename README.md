@@ -9,7 +9,7 @@
 ## 主要特性
 
 + 基于PHP 7.1版本，构建干净、轻量级PHP依赖环境。
-+ 基于[Alpine Linux](https://alpinelinux.org/) 最小化Linux环境加速构建镜像。 使用 [Ali-OSM](http://mirrors.aliyun.com/) 在国内3分钟完成整个镜像构建。
++ 基于[Alpine Linux](https://alpinelinux.org/) 最小化Linux环境加速构建镜像。 使用 [阿里巴巴开源镜像站](https://opsx.alibaba.com/mirror) 在国内3分钟完成整个镜像构建。
 + 内置PHP Composer，支持PHP CLI/FPM两种运行模式。PHP CLI 适用于命令行、后台PHP服务。PHP FPM基于CLI基础镜像，独立安装FPM模块。Nginx容器与PHP-FPM采用Socket方式连接，提供PHP Web应用环境。
 + 提供PHP CLI模式独立运行模式参考：`call-websockt` 与 `php-superviosr`。`call-websockt` 是基于[workman](http://www.workerman.net/) 的PHP Socket服务。`php-supervior` 实现基于Supervisor的队列服务。
 + 可独立配置容器运行时环境参数，支持容器运行日志、数据与宿主机分离，方便调试与维护。
@@ -53,18 +53,17 @@ $ chmod +x /usr/local/bin/docker-compose
 
 2. 配置.env环境参数，一般无需修改默认参数。配置`PHP_FPM_DOMAIN` 支持Nginx容器虚拟主机互通，配置`SUPERVISOR_DOMAIN` 支持Supervisor容器项目互通。[参考这里](https://github.com/laradock/laradock/issues/435)了解容器多个项目内部通信机制。
 
-   ```shell
-   # 生成.env文件
-   $ cp .env.example .env
-   ```
+```shell
+# 生成.env文件
+$ cp .env.example .env
+```
 
 3. [*] 配置定时任务容器环境参数。默认无定时任务，可以参考`php-crond/crontabs/default.example`开启定时任务。
 
-   ```shell
+```shell
    $ cd php-crond/crontabs/
    $ cp default.example default
-   ```
-
+```
 4. [*] 配置Supervisor后台进程处理任务。默认无后台进程处理，参考`php-supervisor/supervisor/default.conf.example` 配置多进程任务。
 
    ```shell
